@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct Youtube_LiteApp: App {
+    @State var mainStateController = MainStateController(initialState: .splashScreen)
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainViewController()
+                .environmentObject(mainStateController)
         }
     }
 }

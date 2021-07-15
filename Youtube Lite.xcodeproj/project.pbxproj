@@ -52,8 +52,8 @@
 		05489E9926A0C8F800EFC91E /* Youtube Lite */ = {
 			isa = PBXGroup;
 			children = (
+				05489EA926A0C92700EFC91E /* UI */,
 				05489E9A26A0C8F800EFC91E /* Youtube_LiteApp.swift */,
-				05489E9C26A0C8F800EFC91E /* ContentView.swift */,
 				05489E9E26A0C8FA00EFC91E /* Assets.xcassets */,
 				05489EA326A0C8FA00EFC91E /* Info.plist */,
 				05489EA026A0C8FA00EFC91E /* Preview Content */,
@@ -67,6 +67,14 @@
 				05489EA126A0C8FA00EFC91E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		05489EA926A0C92700EFC91E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				05489E9C26A0C8F800EFC91E /* ContentView.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

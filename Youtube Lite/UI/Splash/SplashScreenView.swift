@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import iActivityIndicator
 
 struct SplashScreenView: View {
     @EnvironmentObject var stateController: MainStateController
@@ -14,17 +15,26 @@ struct SplashScreenView: View {
     
     var body: some View {
         ZStack {
-            Assets.background
+            Assets.Gradients.background
                 .edgesIgnoringSafeArea(.vertical)
             
-            Text("Splash Screen")
-                .onAppear {
-                    DispatchQueue.main.asyncAfter(
-                        deadline: .now() + SplashScreenView.SECCONDS_BEFORE_SWITCH
-                    ) {
-                        stateController.setState(.mainView)
-                    }
-                }
+            VStack(alignment: .center) {
+                Assets.Images.logo
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 250)
+                
+                iActivityIndicator(style: .rotatingShapes())
+                    .frame(width: 100, height: 100, alignment: .center)
+            }
+                
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(
+                deadline: .now() + SplashScreenView.SECCONDS_BEFORE_SWITCH
+            ) {
+                stateController.setState(.mainView)
+            }
         }
         
     }

@@ -13,7 +13,7 @@ struct Youtube_LiteApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainViewController()
+            AppViewController()
                 .environmentObject(mainStateController)
         }
     }

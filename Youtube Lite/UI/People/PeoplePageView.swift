@@ -8,13 +8,25 @@
 import SwiftUI
 
 struct PeoplePageView: View {
+    @Binding var showUser: Bool
+    @Binding var showSearch: Bool
+    
     var body: some View {
-        Text("People")
+        NavigationView {
+            List {
+                
+            }
+            .setNavigationTitle(
+                title: "People",
+                showUser: $showUser,
+                showSearch: $showSearch
+            )
+        }
     }
 }
 
 struct PeoplePageView_Previews: PreviewProvider {
     static var previews: some View {
-        PeoplePageView()
+        PeoplePageView(showUser: .constant(false), showSearch: .constant(false))
     }
 }

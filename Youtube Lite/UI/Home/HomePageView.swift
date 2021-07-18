@@ -8,13 +8,25 @@
 import SwiftUI
 
 struct HomePageView: View {
+    @Binding var showUser: Bool
+    @Binding var showSearch: Bool
+    
     var body: some View {
-        Text("Home")
+        NavigationView {
+            List {
+                
+            }
+            .setNavigationTitle(
+                title: "Home",
+                showUser: $showUser,
+                showSearch: $showSearch
+            )
+        }
     }
 }
 
 struct HomeVioew_Previews: PreviewProvider {
     static var previews: some View {
-        HomePageView()
+        HomePageView(showUser: .constant(false), showSearch: .constant(false))
     }
 }

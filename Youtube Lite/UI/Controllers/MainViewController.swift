@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct MainViewController: View {
+    @EnvironmentObject var currentUser: User
+
     @State var currentTab: Tabs = .home
+    
+    @State var showUser = false
+    @State var showSearch = false
+    
+    private static let SECCONDS_BEFORE_AUTH_CHECK = 0.5
     
     var body: some View {
         TabView(selection: $currentTab) {
-            HomePageView()
+            HomePageView(showUser: $showUser, showSearch: $showSearch)
                 .tabItem {
                     getHomeViewTabItem()
                 }
@@ -24,12 +31,30 @@ struct MainViewController: View {
                 }
                 .tag(MainViewController.Tabs.upload)
             
-            PeoplePageView()
+            PeoplePageView(showUser: $showUser, showSearch: $showSearch)
                 .tabItem {
                     getPeopleViewTabItem()
                 }
                 .tag(MainViewController.Tabs.people)
         }
+        .sheet(isPresented: $showUser, content: {
+            if (currentUser.isAuthenticated()) {
+                UserView()
+            } else {
+                AuthenticationView()
+            }
+        })
+        .sheet(isPresented: $showSearch, content: {
+            SearchView()
+        })
+        .onAppear(perform: onAppear)
+    }
+    
+    private func onAppear() {
+        DispatchQueue.main.asyncAfter(
+            deadline: .now() + MainViewController.SECCONDS_BEFORE_AUTH_CHECK
+        ) { self.showUser = !currentUser.isAuthenticated() }
+        
     }
     
     private func getHomeViewTabItem() -> some View {

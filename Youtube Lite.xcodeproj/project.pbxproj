@@ -22,6 +22,11 @@
 		056A4E3126A4981A0094C2C4 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4E3026A4981A0094C2C4 /* HomePageView.swift */; };
 		056A4E3326A4982E0094C2C4 /* PeoplePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4E3226A4982E0094C2C4 /* PeoplePageView.swift */; };
 		056A4E3526A4983B0094C2C4 /* UploadPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4E3426A4983B0094C2C4 /* UploadPageView.swift */; };
+		056A4E3726A4A1200094C2C4 /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4E3626A4A1200094C2C4 /* ViewUtils.swift */; };
+		056A4E3A26A4A3CA0094C2C4 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4E3926A4A3CA0094C2C4 /* UserView.swift */; };
+		056A4E3D26A4A5750094C2C4 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4E3C26A4A5750094C2C4 /* SearchView.swift */; };
+		056A4E4126A4A7320094C2C4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4E4026A4A7320094C2C4 /* User.swift */; };
+		056A4E4426A4A7B10094C2C4 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4E4326A4A7B10094C2C4 /* AuthenticationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +46,11 @@
 		056A4E3026A4981A0094C2C4 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		056A4E3226A4982E0094C2C4 /* PeoplePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeoplePageView.swift; sourceTree = "<group>"; };
 		056A4E3426A4983B0094C2C4 /* UploadPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPageView.swift; sourceTree = "<group>"; };
+		056A4E3626A4A1200094C2C4 /* ViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtils.swift; sourceTree = "<group>"; };
+		056A4E3926A4A3CA0094C2C4 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		056A4E3C26A4A5750094C2C4 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		056A4E4026A4A7320094C2C4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		056A4E4326A4A7B10094C2C4 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +84,8 @@
 		05489E9926A0C8F800EFC91E /* Youtube Lite */ = {
 			isa = PBXGroup;
 			children = (
+				056A4E3F26A4A7260094C2C4 /* User */,
+				056A4E3E26A4A7190094C2C4 /* Offline */,
 				05489EB726A0D15800EFC91E /* Assets */,
 				05489EAA26A0CB4C00EFC91E /* LICENSE */,
 				05489EA926A0C92700EFC91E /* UI */,
@@ -96,6 +108,9 @@
 		05489EA926A0C92700EFC91E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				056A4E4226A4A7A60094C2C4 /* Authentication */,
+				056A4E3B26A4A56A0094C2C4 /* Search */,
+				056A4E3826A4A3C00094C2C4 /* User */,
 				056A4E2F26A498070094C2C4 /* Upload */,
 				056A4E2E26A497F60094C2C4 /* People */,
 				056A4E2B26A497770094C2C4 /* Home */,
@@ -121,6 +136,7 @@
 			children = (
 				05489EB226A0CD4800EFC91E /* Controller.swift */,
 				05489EB026A0CCCB00EFC91E /* AppState.swift */,
+				056A4E3626A4A1200094C2C4 /* ViewUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -163,6 +179,45 @@
 				056A4E3426A4983B0094C2C4 /* UploadPageView.swift */,
 			);
 			path = Upload;
+			sourceTree = "<group>";
+		};
+		056A4E3826A4A3C00094C2C4 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				056A4E3926A4A3CA0094C2C4 /* UserView.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		056A4E3B26A4A56A0094C2C4 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				056A4E3C26A4A5750094C2C4 /* SearchView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		056A4E3E26A4A7190094C2C4 /* Offline */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Offline;
+			sourceTree = "<group>";
+		};
+		056A4E3F26A4A7260094C2C4 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				056A4E4026A4A7320094C2C4 /* User.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		056A4E4226A4A7A60094C2C4 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				056A4E4326A4A7B10094C2C4 /* AuthenticationView.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,14 +298,19 @@
 			files = (
 				05489EB326A0CD4800EFC91E /* Controller.swift in Sources */,
 				05489EB926A0D16A00EFC91E /* Assets.swift in Sources */,
+				056A4E3726A4A1200094C2C4 /* ViewUtils.swift in Sources */,
 				056A4E3326A4982E0094C2C4 /* PeoplePageView.swift in Sources */,
 				05489E9D26A0C8F800EFC91E /* ContentView.swift in Sources */,
 				056A4E2D26A497910094C2C4 /* MainViewController.swift in Sources */,
 				05489EAE26A0CC6B00EFC91E /* AppViewController.swift in Sources */,
 				056A4E3526A4983B0094C2C4 /* UploadPageView.swift in Sources */,
+				056A4E4126A4A7320094C2C4 /* User.swift in Sources */,
 				05489E9B26A0C8F800EFC91E /* Youtube_LiteApp.swift in Sources */,
 				05489EB126A0CCCB00EFC91E /* AppState.swift in Sources */,
+				056A4E3D26A4A5750094C2C4 /* SearchView.swift in Sources */,
+				056A4E3A26A4A3CA0094C2C4 /* UserView.swift in Sources */,
 				056A4E3126A4981A0094C2C4 /* HomePageView.swift in Sources */,
+				056A4E4426A4A7B10094C2C4 /* AuthenticationView.swift in Sources */,
 				05489EB626A0CF6000EFC91E /* SplashScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,7 +11,7 @@ import iActivityIndicator
 struct SplashScreenView: View {
     @EnvironmentObject var stateController: MainStateController
     
-    static let SECCONDS_BEFORE_SWITCH = 3.0
+    static let SECCONDS_BEFORE_SWITCH = 0.5
     
     var body: some View {
         ZStack {

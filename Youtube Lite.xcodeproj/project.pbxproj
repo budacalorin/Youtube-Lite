@@ -18,6 +18,9 @@
 		05489EB626A0CF6000EFC91E /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05489EB526A0CF6000EFC91E /* SplashScreenView.swift */; };
 		05489EB926A0D16A00EFC91E /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05489EB826A0D16A00EFC91E /* Assets.swift */; };
 		05489EBC26A0E66100EFC91E /* iActivityIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = 05489EBB26A0E66100EFC91E /* iActivityIndicator */; };
+		054DE88826A5E76D006F1A72 /* SwiftUISideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054DE88726A5E76D006F1A72 /* SwiftUISideMenu.swift */; };
+		054DE88C26A5ECDE006F1A72 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054DE88B26A5ECDE006F1A72 /* SignupView.swift */; };
+		054DE88F26A5ECE9006F1A72 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054DE88E26A5ECE9006F1A72 /* LoginView.swift */; };
 		056A4E2D26A497910094C2C4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4E2C26A497910094C2C4 /* MainViewController.swift */; };
 		056A4E3126A4981A0094C2C4 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4E3026A4981A0094C2C4 /* HomePageView.swift */; };
 		056A4E3326A4982E0094C2C4 /* PeoplePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4E3226A4982E0094C2C4 /* PeoplePageView.swift */; };
@@ -27,6 +30,7 @@
 		056A4E3D26A4A5750094C2C4 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4E3C26A4A5750094C2C4 /* SearchView.swift */; };
 		056A4E4126A4A7320094C2C4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4E4026A4A7320094C2C4 /* User.swift */; };
 		056A4E4426A4A7B10094C2C4 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4E4326A4A7B10094C2C4 /* AuthenticationView.swift */; };
+		056A4E4726A5E5650094C2C4 /* SwiftUISideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 056A4E4626A5E5650094C2C4 /* SwiftUISideMenu */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +46,9 @@
 		05489EB226A0CD4800EFC91E /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		05489EB526A0CF6000EFC91E /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		05489EB826A0D16A00EFC91E /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		054DE88726A5E76D006F1A72 /* SwiftUISideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISideMenu.swift; sourceTree = "<group>"; };
+		054DE88B26A5ECDE006F1A72 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		054DE88E26A5ECE9006F1A72 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		056A4E2C26A497910094C2C4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		056A4E3026A4981A0094C2C4 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		056A4E3226A4982E0094C2C4 /* PeoplePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeoplePageView.swift; sourceTree = "<group>"; };
@@ -58,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				056A4E4726A5E5650094C2C4 /* SwiftUISideMenu in Frameworks */,
 				05489EBC26A0E66100EFC91E /* iActivityIndicator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +92,7 @@
 		05489E9926A0C8F800EFC91E /* Youtube Lite */ = {
 			isa = PBXGroup;
 			children = (
+				054DE88226A5E6C3006F1A72 /* SideMenu */,
 				056A4E3F26A4A7260094C2C4 /* User */,
 				056A4E3E26A4A7190094C2C4 /* Offline */,
 				05489EB726A0D15800EFC91E /* Assets */,
@@ -157,6 +166,30 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		054DE88226A5E6C3006F1A72 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				054DE88726A5E76D006F1A72 /* SwiftUISideMenu.swift */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		054DE88926A5ECC8006F1A72 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				054DE88E26A5ECE9006F1A72 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		054DE88A26A5ECD1006F1A72 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				054DE88B26A5ECDE006F1A72 /* SignupView.swift */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
 		056A4E2B26A497770094C2C4 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +248,8 @@
 		056A4E4226A4A7A60094C2C4 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				054DE88A26A5ECD1006F1A72 /* Signup */,
+				054DE88926A5ECC8006F1A72 /* Login */,
 				056A4E4326A4A7B10094C2C4 /* AuthenticationView.swift */,
 			);
 			path = Authentication;
@@ -238,6 +273,7 @@
 			name = "Youtube Lite";
 			packageProductDependencies = (
 				05489EBB26A0E66100EFC91E /* iActivityIndicator */,
+				056A4E4626A5E5650094C2C4 /* SwiftUISideMenu */,
 			);
 			productName = "Youtube Lite";
 			productReference = 05489E9726A0C8F800EFC91E /* Youtube Lite.app */;
@@ -268,6 +304,7 @@
 			mainGroup = 05489E8E26A0C8F800EFC91E;
 			packageReferences = (
 				05489EBA26A0E66100EFC91E /* XCRemoteSwiftPackageReference "iActivityIndicator" */,
+				056A4E4526A5E5650094C2C4 /* XCRemoteSwiftPackageReference "swiftui-side-menu" */,
 			);
 			productRefGroup = 05489E9826A0C8F800EFC91E /* Products */;
 			projectDirPath = "";
@@ -296,8 +333,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				054DE88C26A5ECDE006F1A72 /* SignupView.swift in Sources */,
 				05489EB326A0CD4800EFC91E /* Controller.swift in Sources */,
 				05489EB926A0D16A00EFC91E /* Assets.swift in Sources */,
+				054DE88826A5E76D006F1A72 /* SwiftUISideMenu.swift in Sources */,
 				056A4E3726A4A1200094C2C4 /* ViewUtils.swift in Sources */,
 				056A4E3326A4982E0094C2C4 /* PeoplePageView.swift in Sources */,
 				05489E9D26A0C8F800EFC91E /* ContentView.swift in Sources */,
@@ -310,6 +349,7 @@
 				056A4E3D26A4A5750094C2C4 /* SearchView.swift in Sources */,
 				056A4E3A26A4A3CA0094C2C4 /* UserView.swift in Sources */,
 				056A4E3126A4981A0094C2C4 /* HomePageView.swift in Sources */,
+				054DE88F26A5ECE9006F1A72 /* LoginView.swift in Sources */,
 				056A4E4426A4A7B10094C2C4 /* AuthenticationView.swift in Sources */,
 				05489EB626A0CF6000EFC91E /* SplashScreenView.swift in Sources */,
 			);
@@ -510,6 +550,14 @@
 				minimumVersion = 0.4.1;
 			};
 		};
+		056A4E4526A5E5650094C2C4 /* XCRemoteSwiftPackageReference "swiftui-side-menu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/globulus/swiftui-side-menu.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -517,6 +565,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 05489EBA26A0E66100EFC91E /* XCRemoteSwiftPackageReference "iActivityIndicator" */;
 			productName = iActivityIndicator;
+		};
+		056A4E4626A5E5650094C2C4 /* SwiftUISideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 056A4E4526A5E5650094C2C4 /* XCRemoteSwiftPackageReference "swiftui-side-menu" */;
+			productName = SwiftUISideMenu;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

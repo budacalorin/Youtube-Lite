@@ -14,6 +14,7 @@ struct MainViewController: View {
     
     @State var showUser = false
     @State var showSearch = false
+    @State var showAuthentication = false
     
     private static let SECCONDS_BEFORE_AUTH_CHECK = 0.5
     
@@ -37,23 +38,23 @@ struct MainViewController: View {
                 }
                 .tag(MainViewController.Tabs.people)
         }
-        .sheet(isPresented: $showUser, content: {
-            if (currentUser.isAuthenticated()) {
-                UserView()
-            } else {
-                AuthenticationView()
-            }
-        })
         .sheet(isPresented: $showSearch, content: {
             SearchView()
         })
+        .sheet(isPresented: $showAuthentication, content: {
+            AuthenticationView(isPresented: $showAuthentication)
+        })
         .onAppear(perform: onAppear)
+        .sideMenu(isShowing: $showUser) {
+            UserView(isPresented: $showUser)
+        }
+        .animation(.easeIn)
     }
     
     private func onAppear() {
         DispatchQueue.main.asyncAfter(
             deadline: .now() + MainViewController.SECCONDS_BEFORE_AUTH_CHECK
-        ) { self.showUser = !currentUser.isAuthenticated() }
+        ) { self.showAuthentication = !currentUser.isAuthenticated() }
         
     }
     

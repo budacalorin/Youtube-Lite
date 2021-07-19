@@ -20,9 +20,6 @@ struct SplashScreenView: View {
             
             VStack(alignment: .center) {
                 Assets.Images.logo
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 250)
                 
                 iActivityIndicator(style: .rotatingShapes())
                     .frame(width: 100, height: 100, alignment: .center)

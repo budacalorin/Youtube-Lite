@@ -12,11 +12,23 @@ extension View {
         return self
             .navigationTitle(title)
             .navigationBarItems(
-                leading: Button(action: { showUser.wrappedValue = true }, label: {
+                leading: Button(action: { showUser.wrappedValue.toggle() }, label: {
                     Image(systemName: "person")
                 }),
-                trailing: Button(action: { showSearch.wrappedValue = true }, label: {
+                trailing: Button(action: { showSearch.wrappedValue.toggle() }, label: {
                     Image(systemName: "magnifyingglass")
                 }))
+    }
+}
+
+extension View {
+    func largeButton() -> some View {
+        return self
+            .font(.italic(.title2)())
+            .padding()
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .foregroundColor(Assets.Colors.colorOnAccent)
+            .background(Assets.Colors.accent)
+            .cornerRadius(3.0)
     }
 }

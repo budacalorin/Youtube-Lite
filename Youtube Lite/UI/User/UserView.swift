@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct UserView: View {
+    @Binding var isPresented: Bool
+    
     var body: some View {
-        Text("User View")
+        Toggle(isOn: $isPresented, label: {
+            Text("Label")
+        })
     }
 }
 
 struct UserView_Previews: PreviewProvider {
     static var previews: some View {
-        UserView()
+        UserView(isPresented: .constant(true))
     }
 }

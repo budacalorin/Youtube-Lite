@@ -34,9 +34,24 @@ class Assets {
         static let uploadGradientTop = Color("UploadGradientTop")
         
         static let uploadGradientBottom = Color("UploadGradientBottom")
+        
+        static let accent = Color("Accent")
+        
+        static let colorOnAccent = Color("ColorOnAccent")
+        
+        static let colorOnPrimary = Color("ColorOnPrimary")
+        
+        static let subHeadline = Color("SubHeadline")
+        
+        static let formField = Color("FormField")
     }
     
     class Images {
-        static let logo = Image("Logo")
+        static var logo: some View {
+            return Image("Logo")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 250)
+        }
     }
 }

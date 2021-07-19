@@ -9,7 +9,11 @@ import SwiftUI
 
 struct SearchView: View {
     var body: some View {
-        Text("Search View")
+        ZStack {
+            Assets.Gradients.background
+            
+            Text("Search View")
+        }
     }
 }
 

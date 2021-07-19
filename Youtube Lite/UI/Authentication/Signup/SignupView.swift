@@ -17,7 +17,7 @@ struct SignupView: View {
     var body: some View {
         ZStack {
             Assets.Gradients.background
-                .edgesIgnoringSafeArea(.vertical)
+                
             
             VStack {
                 VStack(alignment: .leading) {

@@ -21,12 +21,12 @@ public struct SideMenu<MenuContent: View>: ViewModifier {
         return GeometryReader { geometry in
             ZStack(alignment: .leading) {
                 content
-                    .disabled(isShowing)
+//                    .disabled(isShowing)
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .offset(x: self.isShowing ? geometry.size.width / 1.5 : 0)
                 
                 menuContent()
-                    .frame(width: geometry.size.width / 2)
+                    .frame(width: geometry.size.width / 1.5)
                     .transition(.move(edge: .leading))
                     .offset(x: self.isShowing ? 0 : -geometry.size.width / 1.5)
             }.gesture(drag)

@@ -13,8 +13,8 @@ struct HomePageView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                
+            ZStack {
+                Assets.Gradients.background
             }
             .setNavigationTitle(
                 title: "Home",
@@ -23,6 +23,13 @@ struct HomePageView: View {
             )
         }
     }
+    
+    init(showUser: Binding<Bool>, showSearch: Binding<Bool>) {
+        _showUser = showUser
+        _showSearch = showSearch
+    }
+    
+    
 }
 
 struct HomeVioew_Previews: PreviewProvider {

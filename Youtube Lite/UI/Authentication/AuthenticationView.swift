@@ -17,7 +17,6 @@ struct AuthenticationView: View {
         NavigationView {
             ZStack {
                 Assets.Gradients.background
-                    .edgesIgnoringSafeArea(.vertical)
                 
                 VStack {
                     HStack(alignment: .lastTextBaseline) {

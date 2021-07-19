@@ -9,7 +9,11 @@ import SwiftUI
 
 struct UploadPageView: View {
     var body: some View {
-        Text("Upload")
+        ZStack {
+            Assets.Gradients.background
+            
+            Text("Upload")
+        }
     }
 }
 

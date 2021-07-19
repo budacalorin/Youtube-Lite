@@ -10,13 +10,16 @@ import SwiftUI
 
 class Assets {
     class Gradients {
-        static let background = LinearGradient(
-            gradient: Gradient(
-                colors: [Assets.Colors.backgroundTop, Assets.Colors.backgroundBottom]
-            ),
-            startPoint: .top,
-            endPoint: .bottom
-        )
+        static var background: some View {
+            LinearGradient(
+                gradient: Gradient(
+                    colors: [Assets.Colors.backgroundTop, Assets.Colors.backgroundBottom]
+                ),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .edgesIgnoringSafeArea(.vertical)
+        }
         
         static let uploadButton = LinearGradient(
             gradient: Gradient(

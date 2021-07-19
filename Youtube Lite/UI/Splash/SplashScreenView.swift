@@ -11,12 +11,12 @@ import iActivityIndicator
 struct SplashScreenView: View {
     @EnvironmentObject var stateController: MainStateController
     
-    static let SECCONDS_BEFORE_SWITCH = 0.5
+    static let SECCONDS_BEFORE_SWITCH = 1
     
     var body: some View {
         ZStack {
             Assets.Gradients.background
-                .edgesIgnoringSafeArea(.vertical)
+                
             
             VStack(alignment: .center) {
                 Assets.Images.logo

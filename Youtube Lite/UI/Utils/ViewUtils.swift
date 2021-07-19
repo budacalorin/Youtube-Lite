@@ -12,7 +12,7 @@ extension View {
         return self
             .navigationTitle(title)
             .navigationBarItems(
-                leading: Button(action: { showUser.wrappedValue.toggle() }, label: {
+                leading: Button(action: { withAnimation { showUser.wrappedValue.toggle() } }, label: {
                     Image(systemName: "person")
                 }),
                 trailing: Button(action: { showSearch.wrappedValue.toggle() }, label: {

@@ -8,7 +8,9 @@
 import Foundation
 
 class User: ObservableObject {
-    func isAuthenticated() -> Bool {
-        return false
-    }
+    @Published var isAuthenticated = false
+    
+    @Published var emailAddress: String?
+    
+    @Published var authenticationToken: String?
 }

@@ -46,16 +46,17 @@ struct MainViewController: View {
         })
         .onAppear(perform: onAppear)
         .sideMenu(isShowing: $showUser) {
-            UserView(isPresented: $showUser)
+            UserView(
+                isPresented: $showUser,
+                showAuthentication: $showAuthentication
+            )
         }
-        .animation(.easeIn)
     }
     
     private func onAppear() {
         DispatchQueue.main.asyncAfter(
             deadline: .now() + MainViewController.SECCONDS_BEFORE_AUTH_CHECK
-        ) { self.showAuthentication = !currentUser.isAuthenticated() }
-        
+        ) { self.showAuthentication = !currentUser.isAuthenticated }
     }
     
     private func getHomeViewTabItem() -> some View {

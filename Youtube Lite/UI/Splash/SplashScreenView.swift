@@ -11,12 +11,11 @@ import iActivityIndicator
 struct SplashScreenView: View {
     @EnvironmentObject var stateController: MainStateController
     
-    static let SECCONDS_BEFORE_SWITCH = 1
+    static let SECCONDS_BEFORE_SWITCH = 1.0
     
     var body: some View {
         ZStack {
             Assets.Gradients.background
-                
             
             VStack(alignment: .center) {
                 Assets.Images.logo
@@ -24,7 +23,6 @@ struct SplashScreenView: View {
                 iActivityIndicator(style: .rotatingShapes())
                     .frame(width: 100, height: 100, alignment: .center)
             }
-                
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(

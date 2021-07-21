@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct Youtube_LiteApp: App {
@@ -19,5 +20,9 @@ struct Youtube_LiteApp: App {
                 .environmentObject(mainStateController)
                 .environmentObject(currentUser)
         }
+    }
+    
+    init() {
+        FirebaseApp.configure()
     }
 }

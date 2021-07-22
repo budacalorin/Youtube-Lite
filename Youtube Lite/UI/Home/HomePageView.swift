@@ -20,10 +20,13 @@ struct HomePageView: View {
                 
                 VStack(alignment: .leading, spacing: 10) {
                     VideoList(videos: viewModel.allVideos)
+                        .padding(.vertical)
                 
                     VideoList(videos: viewModel.trending)
+                        .padding(.vertical)
                 
                     VideoList(videos: viewModel.popular)
+                        .padding(.vertical)
                 }
             }
             .setNavigationTitle(

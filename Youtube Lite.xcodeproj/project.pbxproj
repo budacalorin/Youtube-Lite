@@ -34,6 +34,10 @@
 		055D2B4E26A95E720023BD62 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055D2B4D26A95E720023BD62 /* DatabaseHelper.swift */; };
 		055D2B5026A97A240023BD62 /* VideoUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055D2B4F26A97A240023BD62 /* VideoUtils.swift */; };
 		055D2B5226A97BBD0023BD62 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055D2B5126A97BBD0023BD62 /* HomeViewModel.swift */; };
+		055D2B5526A99A590023BD62 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055D2B5426A99A590023BD62 /* VideoView.swift */; };
+		055D2B5726A9A2DB0023BD62 /* VideoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055D2B5626A9A2DB0023BD62 /* VideoList.swift */; };
+		055D2B5926A9A6C30023BD62 /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055D2B5826A9A6C30023BD62 /* ThumbnailView.swift */; };
+		055D2B5C26A9A6F50023BD62 /* ThumbnailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055D2B5B26A9A6F50023BD62 /* ThumbnailViewModel.swift */; };
 		056A4E2D26A497910094C2C4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4E2C26A497910094C2C4 /* MainViewController.swift */; };
 		056A4E3126A4981A0094C2C4 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4E3026A4981A0094C2C4 /* HomePageView.swift */; };
 		056A4E3326A4982E0094C2C4 /* PeoplePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4E3226A4982E0094C2C4 /* PeoplePageView.swift */; };
@@ -76,6 +80,10 @@
 		055D2B4D26A95E720023BD62 /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
 		055D2B4F26A97A240023BD62 /* VideoUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoUtils.swift; sourceTree = "<group>"; };
 		055D2B5126A97BBD0023BD62 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		055D2B5426A99A590023BD62 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
+		055D2B5626A9A2DB0023BD62 /* VideoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoList.swift; sourceTree = "<group>"; };
+		055D2B5826A9A6C30023BD62 /* ThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailView.swift; sourceTree = "<group>"; };
+		055D2B5B26A9A6F50023BD62 /* ThumbnailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailViewModel.swift; sourceTree = "<group>"; };
 		056A4E2C26A497910094C2C4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		056A4E3026A4981A0094C2C4 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		056A4E3226A4982E0094C2C4 /* PeoplePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeoplePageView.swift; sourceTree = "<group>"; };
@@ -153,6 +161,7 @@
 		05489EA926A0C92700EFC91E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				055D2B5326A99A4B0023BD62 /* Video */,
 				056A4E4226A4A7A60094C2C4 /* Authentication */,
 				056A4E3B26A4A56A0094C2C4 /* Search */,
 				056A4E3826A4A3C00094C2C4 /* User */,
@@ -256,6 +265,25 @@
 				055D2B4D26A95E720023BD62 /* DatabaseHelper.swift */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		055D2B5326A99A4B0023BD62 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				055D2B5A26A9A6E00023BD62 /* Thumbnail */,
+				055D2B5426A99A590023BD62 /* VideoView.swift */,
+				055D2B5626A9A2DB0023BD62 /* VideoList.swift */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
+		055D2B5A26A9A6E00023BD62 /* Thumbnail */ = {
+			isa = PBXGroup;
+			children = (
+				055D2B5826A9A6C30023BD62 /* ThumbnailView.swift */,
+				055D2B5B26A9A6F50023BD62 /* ThumbnailViewModel.swift */,
+			);
+			path = Thumbnail;
 			sourceTree = "<group>";
 		};
 		056A4E2B26A497770094C2C4 /* Home */ = {
@@ -471,10 +499,13 @@
 				05489EB926A0D16A00EFC91E /* Assets.swift in Sources */,
 				054DE88826A5E76D006F1A72 /* SwiftUISideMenu.swift in Sources */,
 				055D2B3226A88B630023BD62 /* FirebaseHelper.swift in Sources */,
+				055D2B5C26A9A6F50023BD62 /* ThumbnailViewModel.swift in Sources */,
 				056A4E3726A4A1200094C2C4 /* ViewUtils.swift in Sources */,
 				055D2B3E26A88F380023BD62 /* Authenticator.swift in Sources */,
 				056A4E3326A4982E0094C2C4 /* PeoplePageView.swift in Sources */,
+				055D2B5726A9A2DB0023BD62 /* VideoList.swift in Sources */,
 				055D2B4226A89D9D0023BD62 /* CombineViewModel.swift in Sources */,
+				055D2B5926A9A6C30023BD62 /* ThumbnailView.swift in Sources */,
 				05489E9D26A0C8F800EFC91E /* ContentView.swift in Sources */,
 				055D2B4426A95BFC0023BD62 /* VideoHelper.swift in Sources */,
 				056A4E2D26A497910094C2C4 /* MainViewController.swift in Sources */,
@@ -493,6 +524,7 @@
 				056A4E3126A4981A0094C2C4 /* HomePageView.swift in Sources */,
 				054DE88F26A5ECE9006F1A72 /* LoginView.swift in Sources */,
 				056A4E4426A4A7B10094C2C4 /* AuthenticationView.swift in Sources */,
+				055D2B5526A99A590023BD62 /* VideoView.swift in Sources */,
 				05489EB626A0CF6000EFC91E /* SplashScreenView.swift in Sources */,
 				055D2B5226A97BBD0023BD62 /* HomeViewModel.swift in Sources */,
 				055D2B4026A897D50023BD62 /* MainViewModel.swift in Sources */,

@@ -47,3 +47,15 @@ class Video: ObservableObject, Identifiable, Equatable {
         )
     }
 }
+
+extension Video {
+    static let dummy = Video(
+        id: "q352332145123",
+        name: "Sample Video",
+        description: "This is a sample video",
+        url: "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mov-file.mov",
+        userUID: "sdgdfgsdfr43rt43wfsd",
+        tags: ["Tag1", "Tag2"],
+        stars: 4
+    )
+}

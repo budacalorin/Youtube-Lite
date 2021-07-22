@@ -26,4 +26,6 @@ extension Color {
     static let subHeadline = Color("SubHeadline")
     
     static let formField = Color("FormField")
+    
+    static let secondary = Color("Secondary")
 }

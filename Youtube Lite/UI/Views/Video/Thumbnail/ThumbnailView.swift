@@ -15,12 +15,14 @@ struct ThumbnailView: View {
     @StateObject var viewModel = ThumbnailViewModel()
     
     var body: some View {
-        if viewModel.image != nil {
-            viewModel.image
+        if let image = viewModel.image {
+            image
+                .resizable()
+                .scaledToFit()
         } else {
             ZStack {
                 Rectangle()
-                    .foregroundColor(.gray)
+                    .foregroundColor(.secondary)
                 
                 if viewModel.error {
                     Image(systemName: "questionmark")

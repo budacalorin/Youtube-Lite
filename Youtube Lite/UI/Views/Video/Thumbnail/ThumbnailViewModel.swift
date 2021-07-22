@@ -34,10 +34,11 @@ class ThumbnailViewModel: CombineViewModel {
         
         let asset: AVAsset = AVAsset(url: url)
         let imageGenerator = AVAssetImageGenerator(asset: asset)
+        imageGenerator.appliesPreferredTrackTransform = true
         
         do {
             let thumbnailImage = try imageGenerator.copyCGImage(
-                at: CMTimeMake(value: 1, timescale: 60),
+                at: CMTimeMake(value: 7, timescale: 1),
                 actualTime: nil
             )
             return Image(uiImage: UIImage(cgImage: thumbnailImage))

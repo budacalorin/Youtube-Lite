@@ -35,4 +35,8 @@ class UsersHelper: DatabaseHelper, ObservableObject {
         database.child("users").setValue(users)
     }
     
+    func getUserName(forUID uid: String) -> String? {
+        return users?[uid]?.getName()
+    }
+    
 }

@@ -14,6 +14,8 @@ class FirebaseHelper {
     
     let usersHelper = UsersHelper()
     
+    let videoHelper = VideoHelper()
+    
     private init() { }
     
 }

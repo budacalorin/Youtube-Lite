@@ -8,14 +8,14 @@
 import Foundation
 import SwiftUI
 
-class User: ObservableObject {
+class User: ObservableObject, Identifiable {
     static let currentUser = User()
     
     @Published var userData = UserData()
     
-    var userUID: String?
-    
     @Published var isAuthenticated = false
+    
+    var id: String?
     
     private init() {
         startListeningForUserChanges()
@@ -26,24 +26,29 @@ class User: ObservableObject {
             guard let user = user else {
                 print("Failed to retreive user.")
                 DispatchQueue.main.async {
-                    self.isAuthenticated = false
-                    self.userData = UserData()
+                    self.removeSigninData()
                 }
                 return
             }
             
             self.userData[UserDataKeys.email.rawValue] = user.email
             self.userData[UserDataKeys.name.rawValue] = user.displayName
-            self.userUID = user.uid
+            self.id = user.uid
             
             DispatchQueue.main.async { self.isAuthenticated = true }
         })
     }
     
+    private func removeSigninData() {
+        isAuthenticated = false
+        id = nil
+        userData = UserData()
+    }
+    
     func changeName(_ name: String) {
         print("Changing users name")
         
-        guard userUID != nil else {
+        guard id != nil else {
             print("Could not change user name due to userUID being nil")
             return
         }
@@ -52,7 +57,7 @@ class User: ObservableObject {
     }
     
     func commitChanges() {
-        guard userUID != nil else {
+        guard id != nil else {
             print("Could not update user data due to userUID being nil")
             return
         }

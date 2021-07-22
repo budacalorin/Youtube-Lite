@@ -30,6 +30,7 @@ struct LoginView: View {
                         .padding()
                         .background(Assets.Colors.formField)
                         .cornerRadius(3.0)
+                        .disableAutocorrection(true)
                 }
                 .padding()
                 

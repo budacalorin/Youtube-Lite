@@ -8,18 +8,17 @@
 import Foundation
 import FirebaseDatabase
 
-class UsersHelper {
+class UsersHelper: DatabaseHelper, ObservableObject {
     
-    var users: [String: UserData]? = [:]
+    @Published var users: [String: UserData]? = [:]
     
-    let database = Database.database().reference()
-    
-    init() {
+    override init() {
+        super.init()
         startUserListener()
     }
     
     func updateUser(_ user: User) {
-        database.child("users").child(user.userUID!).setValue(user.userData)
+        database.child("users").child(user.id!).setValue(user.userData)
     }
     
     func startUserListener() {

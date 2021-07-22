@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UserView: View {
-    @EnvironmentObject var user: User
+    @ObservedObject var user = User.currentUser
     
     @Binding var isPresented: Bool
     
@@ -21,10 +21,13 @@ struct UserView: View {
                     .edgesIgnoringSafeArea(.vertical)
                 
                 VStack {
-                    if (!user.isAuthenticated) {
-                        Circle()
-                            .foregroundColor(Assets.Colors.colorOnAccent.opacity(0.4))
-                            .frame(width: 200, height: 200, alignment: .center)
+                    
+                    Circle()
+                        .foregroundColor(Assets.Colors.colorOnAccent.opacity(0.4))
+                        .frame(width: 200, height: 200, alignment: .center)
+                    
+                    if (user.isAuthenticated) {
+                        Text(user.userData[UserDataKeys.name.rawValue] ?? "N/A")
                     }
                     
                     Spacer()
@@ -62,7 +65,7 @@ struct UserView: View {
                             Label(
                                 title: {
                                     Button(
-                                        action: { user.isAuthenticated = false },
+                                        action: { FirebaseHelper.shared.authenticator.signOut() },
                                         label: { Text("Log out") }
                                     )
                                 },
@@ -76,9 +79,16 @@ struct UserView: View {
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .navigationTitle("User")
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(trailing: Button(action: { withAnimation { isPresented = false } }, label: {
-                    Text("Close")
-                }))
+                .navigationBarItems(
+                    trailing:
+                        Button(
+                            action: {
+                                withAnimation { isPresented = false }
+                            }, label: {
+                                Text("Close")
+                            }
+                        )
+                )
                 .padding()
             }
         }
@@ -88,6 +98,5 @@ struct UserView: View {
 struct UserView_Previews: PreviewProvider {
     static var previews: some View {
         UserView(isPresented: .constant(true), showAuthentication: .constant(false))
-            .environmentObject(User())
     }
 }

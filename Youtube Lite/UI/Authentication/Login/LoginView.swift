@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct LoginView: View {
     @State var email: String = ""
@@ -47,7 +48,9 @@ struct LoginView: View {
                 
                 Spacer()
                 
-                Button(action: {}, label: {
+                Button(action: {
+                    FirebaseHelper.shared.authenticator.signIn(email: email, password: password)
+                }, label: {
                     Text("Login").largeButton().padding()
                 })
             }

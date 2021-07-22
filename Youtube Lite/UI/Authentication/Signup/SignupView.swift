@@ -63,7 +63,9 @@ struct SignupView: View {
                 
                 Spacer()
                 
-                Button(action: {}, label: {
+                Button(action: {
+                    FirebaseHelper.shared.authenticator.signUp(email: email, password: password, name: name)
+                }, label: {
                     Text("Sign Up").largeButton().padding()
                 })
             }

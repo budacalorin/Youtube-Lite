@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "iActivityIndicator",
+        "repositoryURL": "https://github.com/MojtabaHs/iActivityIndicator.git",
+        "state": {
+          "branch": null,
+          "revision": "051ba2db67f019af4b0600c01ba2ca991092daae",
+          "version": "0.4.1"
+        }
+      },
+      {
+        "package": "SwiftUISideMenu",
+        "repositoryURL": "https://github.com/globulus/swiftui-side-menu.git",
+        "state": {
+          "branch": null,
+          "revision": "7a4dc9412bd8c2abf8b6d58bae620ba892f2133b",
+          "version": "1.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -8,19 +8,14 @@
 import SwiftUI
 
 struct MainViewController: View {
-    @EnvironmentObject var currentUser: User
-
+    
     @State var currentTab: Tabs = .home
     
-    @State var showUser = false
-    @State var showSearch = false
-    @State var showAuthentication = false
-    
-    private static let SECCONDS_BEFORE_AUTH_CHECK = 0.5
+    @StateObject var viewModel = MainViewModel()
     
     var body: some View {
         TabView(selection: $currentTab) {
-            HomePageView(showUser: $showUser, showSearch: $showSearch)
+            HomePageView(showUser: $viewModel.showUser, showSearch: $viewModel.showSearch)
                 .tabItem {
                     getHomeViewTabItem()
                 }
@@ -32,31 +27,29 @@ struct MainViewController: View {
                 }
                 .tag(MainViewController.Tabs.upload)
             
-            PeoplePageView(showUser: $showUser, showSearch: $showSearch)
+            PeoplePageView(showUser: $viewModel.showUser, showSearch: $viewModel.showSearch)
                 .tabItem {
                     getPeopleViewTabItem()
                 }
                 .tag(MainViewController.Tabs.people)
         }
-        .sheet(isPresented: $showSearch, content: {
+        .sheet(isPresented: $viewModel.showSearch, content: {
             SearchView()
         })
-        .sheet(isPresented: $showAuthentication, content: {
-            AuthenticationView(isPresented: $showAuthentication)
+        .sheet(isPresented: $viewModel.showAuthentication, content: {
+            AuthenticationView(isPresented: $viewModel.showAuthentication)
         })
         .onAppear(perform: onAppear)
-        .sideMenu(isShowing: $showUser) {
+        .sideMenu(isShowing: $viewModel.showUser) {
             UserView(
-                isPresented: $showUser,
-                showAuthentication: $showAuthentication
+                isPresented: $viewModel.showUser,
+                showAuthentication: $viewModel.showAuthentication
             )
         }
     }
     
     private func onAppear() {
-        DispatchQueue.main.asyncAfter(
-            deadline: .now() + MainViewController.SECCONDS_BEFORE_AUTH_CHECK
-        ) { self.showAuthentication = !currentUser.isAuthenticated }
+        viewModel.initListeners()
     }
     
     private func getHomeViewTabItem() -> some View {
@@ -82,6 +75,10 @@ struct MainViewController: View {
         case home
         case upload
         case people
+    }
+    
+    init() {
+        
     }
 }
 

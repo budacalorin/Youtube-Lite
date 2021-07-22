@@ -11,14 +11,11 @@ import Firebase
 @main
 struct Youtube_LiteApp: App {
     @State var mainStateController = MainStateController(initialState: .splashScreen)
-
-    @State var currentUser = User()
     
     var body: some Scene {
         WindowGroup {
             AppViewController()
                 .environmentObject(mainStateController)
-                .environmentObject(currentUser)
         }
     }
     

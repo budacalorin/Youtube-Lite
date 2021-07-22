@@ -16,7 +16,7 @@ struct VideoView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                Assets.Gradients.background
+                Gradient.background
                 
                 VStack(alignment: .leading) {
                     ZStack {
@@ -45,8 +45,8 @@ struct VideoView: View {
                                 ForEach(video.videoData.getTags(), id: \.self) { tag in
                                     Text("#\(tag)")
                                         .padding(5)
-                                        .background(Assets.Gradients.uploadButton)
-                                        .foregroundColor(Assets.Colors.colorOnAccent)
+                                        .background(Gradient.uploadButton)
+                                        .foregroundColor(.colorOnAccent)
                                         .cornerRadius(10)
                                 }
                                 
@@ -59,7 +59,7 @@ struct VideoView: View {
                             
                             VStack(alignment: .leading) {
                                 Text("Author:")
-                                    .foregroundColor(Assets.Colors.colorOnPrimary)
+                                    .foregroundColor(.colorOnPrimary)
                                 Text(video.videoData.getUserUID())
                             }
                             

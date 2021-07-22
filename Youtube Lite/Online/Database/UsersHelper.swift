@@ -29,17 +29,6 @@ class UsersHelper: DatabaseHelper, ObservableObject {
                 }
             }
         }
-        
-//        database.child("users").getData(completion: { (error, snapshot) in
-//            if let error = error {
-//                print("Error occured while reading users. Error: \(error)")
-//                return
-//            }
-//
-//            if (snapshot.exists()) {
-//                self.users = snapshot.value! as! [String: UserData]
-//            }
-//        })
     }
     
     func writeUsers() {

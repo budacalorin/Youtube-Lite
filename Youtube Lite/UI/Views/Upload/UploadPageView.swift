@@ -22,7 +22,7 @@ struct UploadPageView: View {
     
     var body: some View {
         ZStack {
-            Assets.Gradients.background
+            Gradient.background
             
             
             VStack {
@@ -42,7 +42,7 @@ struct UploadPageView: View {
                             
                             HStack {
                                 Text(tag)
-                                    .foregroundColor(Assets.Colors.colorOnAccent)
+                                    .foregroundColor(.colorOnAccent)
                                 
                                 Spacer()
                                 
@@ -51,11 +51,11 @@ struct UploadPageView: View {
                                 })
                             }
                         }
-                        .listRowBackground(Assets.Colors.formField.cornerRadius(3.0))
+                        .listRowBackground(Color.formField.cornerRadius(3.0))
                         
                         HStack {
                             TextField("Enter new tag here", text: $newTag)
-                                .foregroundColor(Assets.Colors.colorOnAccent)
+                                .foregroundColor(.colorOnAccent)
                             
                             Spacer()
                             
@@ -68,12 +68,12 @@ struct UploadPageView: View {
                                 Image(systemName: "plus")
                             })
                         }
-                        .listRowBackground(Assets.Colors.formField.cornerRadius(3.0))
+                        .listRowBackground(Color.formField.cornerRadius(3.0))
                     }
                 }
                 .padding(.horizontal)
                 
-                if (!errorMessage.isEmpty) {
+                if !errorMessage.isEmpty {
                     Text(errorMessage)
                         .foregroundColor(.red)
                         .multilineTextAlignment(.center)
@@ -144,9 +144,9 @@ fileprivate extension View {
             .textContentType(.emailAddress)
             .autocapitalization(.none)
             .disableAutocorrection(true)
-            .foregroundColor(Assets.Colors.colorOnAccent)
+            .foregroundColor(.colorOnAccent)
             .padding()
-            .background(Assets.Colors.formField)
+            .background(Color.formField)
             .cornerRadius(3.0)
     }
 }

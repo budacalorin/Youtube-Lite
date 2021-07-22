@@ -27,8 +27,8 @@ extension View {
             .font(.italic(.title2)())
             .padding()
             .frame(minWidth: 0, maxWidth: .infinity)
-            .foregroundColor(Assets.Colors.colorOnAccent)
-            .background(Assets.Colors.accent)
+            .foregroundColor(.colorOnAccent)
+            .background(Color.accent)
             .cornerRadius(3.0)
     }
 }

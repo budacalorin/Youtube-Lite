@@ -16,7 +16,7 @@ struct SignupView: View {
     
     var body: some View {
         ZStack {
-            Assets.Gradients.background
+            Gradient.background
                 
             
             VStack {
@@ -27,9 +27,9 @@ struct SignupView: View {
                     TextField("Enter name here", text: $name)
                         .textContentType(.emailAddress)
                         .autocapitalization(.none)
-                        .foregroundColor(Assets.Colors.colorOnAccent)
+                        .foregroundColor(.colorOnAccent)
                         .padding()
-                        .background(Assets.Colors.formField)
+                        .background(Color.formField)
                         .cornerRadius(3.0)
                 }
                 .padding()
@@ -41,9 +41,9 @@ struct SignupView: View {
                     TextField("Enter email here", text: $email)
                         .textContentType(.emailAddress)
                         .autocapitalization(.none)
-                        .foregroundColor(Assets.Colors.colorOnAccent)
+                        .foregroundColor(.colorOnAccent)
                         .padding()
-                        .background(Assets.Colors.formField)
+                        .background(Color.formField)
                         .cornerRadius(3.0)
                         .disableAutocorrection(true)
                 }
@@ -55,9 +55,9 @@ struct SignupView: View {
                     
                     SecureField("Enter password here", text: $password)
                         .autocapitalization(.none)
-                        .foregroundColor(Assets.Colors.colorOnAccent)
+                        .foregroundColor(.colorOnAccent)
                         .padding()
-                        .background(Assets.Colors.formField)
+                        .background(Color.formField)
                         .cornerRadius(3.0)
                 }
                 .padding()

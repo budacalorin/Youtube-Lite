@@ -15,10 +15,10 @@ struct SplashScreenView: View {
     
     var body: some View {
         ZStack {
-            Assets.Gradients.background
+            Gradient.background
             
             VStack(alignment: .center) {
-                Assets.Images.logo
+                Image.logo
                 
                 iActivityIndicator(style: .rotatingShapes())
                     .frame(width: 100, height: 100, alignment: .center)

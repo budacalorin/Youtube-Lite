@@ -16,7 +16,7 @@ struct AuthenticationView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Assets.Gradients.background
+                Gradient.background
                 
                 VStack {
                     HStack(alignment: .lastTextBaseline) {
@@ -30,16 +30,16 @@ struct AuthenticationView: View {
                     
                     Spacer()
                     
-                    Assets.Images.logo
+                    Image.logo
                     
                     Text("Create, discover & consume engaging content that makes work a breeze!")
                         .font(.italic(.title)())
-                        .foregroundColor(Assets.Colors.colorOnPrimary)
+                        .foregroundColor(.colorOnPrimary)
                         .multilineTextAlignment(.center)
                     
                     Text("Youtube puts the power of the world’s leading AI-powered content engagement platform in the palm of your hands!")
                         .font(.subheadline)
-                        .foregroundColor(Assets.Colors.subHeadline)
+                        .foregroundColor(.subHeadline)
                         .multilineTextAlignment(.center)
                     
                     Spacer()

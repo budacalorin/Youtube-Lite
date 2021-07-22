@@ -14,7 +14,7 @@ struct PeoplePageView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Assets.Gradients.background
+                Gradient.background
                  
             }
             .setNavigationTitle(

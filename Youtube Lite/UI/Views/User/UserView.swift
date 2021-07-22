@@ -17,16 +17,16 @@ struct UserView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Assets.Colors.backgroundBottom
+                Color.backgroundBottom
                     .edgesIgnoringSafeArea(.vertical)
                 
                 VStack {
                     
                     Circle()
-                        .foregroundColor(Assets.Colors.colorOnAccent.opacity(0.4))
+                        .foregroundColor(.colorOnAccent.opacity(0.4))
                         .frame(width: 200, height: 200, alignment: .center)
                     
-                    if (user.isAuthenticated) {
+                    if user.isAuthenticated {
                         Text(user.userData[UserDataKeys.name.rawValue] ?? "N/A")
                     }
                     
@@ -51,7 +51,7 @@ struct UserView: View {
                         
                         Spacer()
                         
-                        if (!user.isAuthenticated) {
+                        if !user.isAuthenticated {
                             Label(
                                 title: {
                                     Button(

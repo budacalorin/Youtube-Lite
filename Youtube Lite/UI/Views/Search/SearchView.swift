@@ -10,7 +10,7 @@ import SwiftUI
 struct SearchView: View {
     var body: some View {
         ZStack {
-            Assets.Gradients.background
+            Gradient.background
             
             Text("Search View")
         }

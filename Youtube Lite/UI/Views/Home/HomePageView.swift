@@ -16,7 +16,7 @@ struct HomePageView: View {
     var body: some View {
         NavigationView {
             ZStack(alignment: .topLeading) {
-                Assets.Gradients.background
+                Gradient.background
                 
                 VStack(alignment: .leading, spacing: 10) {
                     VideoList(videos: viewModel.allVideos)

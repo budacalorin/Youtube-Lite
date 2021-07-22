@@ -42,6 +42,7 @@ struct UploadPageView: View {
                             
                             HStack {
                                 Text(tag)
+                                    .foregroundColor(Assets.Colors.colorOnAccent)
                                 
                                 Spacer()
                                 
@@ -54,6 +55,7 @@ struct UploadPageView: View {
                         
                         HStack {
                             TextField("Enter new tag here", text: $newTag)
+                                .foregroundColor(Assets.Colors.colorOnAccent)
                             
                             Spacer()
                             
@@ -99,6 +101,7 @@ struct UploadPageView: View {
         
         FirebaseHelper.shared.videoHelper.updateVideo(
             video: Video(
+                id: UUID().uuidString,
                 name: name,
                 description: description,
                 url: url,

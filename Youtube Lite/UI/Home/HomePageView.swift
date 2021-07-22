@@ -11,10 +11,20 @@ struct HomePageView: View {
     @Binding var showUser: Bool
     @Binding var showSearch: Bool
     
+    @StateObject var viewModel = HomeViewModel()
+    
     var body: some View {
         NavigationView {
-            ZStack {
+            ZStack(alignment: .topLeading) {
                 Assets.Gradients.background
+                
+                VStack(alignment: .leading, spacing: 10) {
+                    VideoList(videos: viewModel.allVideos)
+                
+                    VideoList(videos: viewModel.trending)
+                
+                    VideoList(videos: viewModel.popular)
+                }
             }
             .setNavigationTitle(
                 title: "Home",
@@ -22,11 +32,21 @@ struct HomePageView: View {
                 showSearch: $showSearch
             )
         }
+        .onAppear(perform: onAppear)
+        .onDisappear(perform: onDisappear)
     }
     
     init(showUser: Binding<Bool>, showSearch: Binding<Bool>) {
         _showUser = showUser
         _showSearch = showSearch
+    }
+    
+    private func onAppear() {
+        viewModel.initListeners()
+    }
+    
+    private func onDisappear() {
+        viewModel.cancelListeners()
     }
     
     

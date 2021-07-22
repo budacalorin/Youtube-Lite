@@ -9,7 +9,7 @@ import Foundation
 
 class VideoHelper: DatabaseHelper, ObservableObject {
     
-    @Published var videos: [String: VideoData]? = [:]
+    @Published var videos: [String: VideoData] = [:]
     
     override init() {
         super.init()
@@ -20,7 +20,7 @@ class VideoHelper: DatabaseHelper, ObservableObject {
         database.child("videos").observe(.value) { snapshot in
             if let value = snapshot.value {
                 if !(value is NSNull) {
-                    self.videos = value as! [String: VideoData]?
+                    self.videos = value as! [String: VideoData]
                 }
             }
         }

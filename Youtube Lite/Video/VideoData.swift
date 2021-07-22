@@ -18,3 +18,25 @@ enum VideoKeys: String {
 
 typealias VideoData = [String : Any]
 
+extension VideoData {
+    static let DEFAULT_UNKNOWN = ""
+    
+    func getUrl() -> String {
+        return self[VideoKeys.url.rawValue] as? String ?? VideoData.DEFAULT_UNKNOWN
+    }
+    func getUserUID() -> String {
+        return self[VideoKeys.userUID.rawValue] as? String ?? VideoData.DEFAULT_UNKNOWN
+    }
+    func getName() -> String {
+        return self[VideoKeys.name.rawValue] as? String ?? VideoData.DEFAULT_UNKNOWN
+    }
+    func getDescription() -> String {
+        return self[VideoKeys.description.rawValue] as? String ?? VideoData.DEFAULT_UNKNOWN
+    }
+    func getTags() -> [String] {
+        return self[VideoKeys.tags.rawValue] as? [String] ?? []
+    }
+    func getStars() -> Int {
+        return self[VideoKeys.stars.rawValue] as? Int ?? 1
+    }
+}

@@ -17,6 +17,7 @@ class Video: ObservableObject, Identifiable, Equatable {
     @Published var videoData = VideoData()
     
     init(
+        id: String,
         name: String,
         description: String,
         url: String,
@@ -24,7 +25,7 @@ class Video: ObservableObject, Identifiable, Equatable {
         tags: [String],
         stars: Int
     ) {
-        id = UUID().uuidString
+        self.id = id
         
         videoData[VideoKeys.url.rawValue] = url
         videoData[VideoKeys.userUID.rawValue] = userUID
@@ -32,5 +33,17 @@ class Video: ObservableObject, Identifiable, Equatable {
         videoData[VideoKeys.description.rawValue] = description
         videoData[VideoKeys.tags.rawValue] = tags
         videoData[VideoKeys.stars.rawValue] = stars
+    }
+    
+    convenience init(fromEncoded data: Dictionary<String, VideoData>.Element) {
+        self.init(
+            id: data.key,
+            name: data.value.getName(),
+            description: data.value.getDescription(),
+            url: data.value.getUrl(),
+            userUID: data.value.getUserUID(),
+            tags: data.value.getTags(),
+            stars: data.value.getStars()
+        )
     }
 }

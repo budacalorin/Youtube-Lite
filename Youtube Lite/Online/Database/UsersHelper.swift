@@ -10,10 +10,13 @@ import FirebaseDatabase
 
 class UsersHelper: DatabaseHelper, ObservableObject {
     
+    private(set) var didFirstRead = false
+    
     @Published var users: [String: UserData]? = [:]
     
     override init() {
         super.init()
+        readUsers()
         startUserListener()
     }
     
@@ -22,11 +25,26 @@ class UsersHelper: DatabaseHelper, ObservableObject {
     }
     
     func startUserListener() {
-        database.child("users").observe(.value) { snapshot in
-            if let value = snapshot.value {
-                if !(value is NSNull) {
-                    self.users = value as! [String: UserData]?
-                }
+        database.child("users").observe(.value) { [weak self] snapshot in
+            self?.processUsersSnapshot(snapshot)
+        }
+    }
+    
+    func readUsers() {
+        database.child("users").getData { [weak self] error, snapshot in
+            if let error = error {
+                print("Failed to read users. Error: \(error)")
+                return
+            }
+            self?.didFirstRead = true
+            self?.processUsersSnapshot(snapshot)
+         }
+    }
+    
+    private func processUsersSnapshot(_ snapshot: DataSnapshot) {
+        if let value = snapshot.value {
+            if !(value is NSNull) {
+                users = value as! [String: UserData]?
             }
         }
     }

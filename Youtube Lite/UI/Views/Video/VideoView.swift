@@ -17,6 +17,8 @@ struct VideoView: View {
     
     let player: AVPlayer
     
+    @State var presentVideo = false
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -24,14 +26,8 @@ struct VideoView: View {
                 
                 VStack(alignment: .leading) {
                     ScrollView {
-                        
-                        ZStack {
-                            VideoPlayer(player: player)
-                            
-//                            Image(systemName: "play.circle.fill")
-//                                .resizable()
-//                                .frame(width: 50, height: 50)
-                        }
+                        AVPlayerView(player: player)
+                            .frame(height: 250)
                         
                         VStack(alignment: .leading) {
                             HStack {
@@ -58,7 +54,6 @@ struct VideoView: View {
                                             .foregroundColor(.colorOnAccent)
                                             .cornerRadius(10)
                                     }
-                                    
                                 }
                             }
                             
@@ -90,6 +85,11 @@ struct VideoView: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
+            .fullScreenCover(isPresented: $presentVideo, onDismiss: player.pause) {
+                AVPlayerView(player: player)
+                    .edgesIgnoringSafeArea(.all)
+            }
+            .onDisappear { player.pause() }
         }
     }
     

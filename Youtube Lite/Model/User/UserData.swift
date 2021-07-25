@@ -10,18 +10,18 @@ import Foundation
 typealias UserData = [String : String]
 
 enum UserDataKeys: String {
-    case email = "email"
-    case name = "name"
+    case email
+    case name
 }
 
 extension UserData {
     static let DEFAULT_UNKNOWN = ""
     
     func getName() -> String? {
-        return self[UserDataKeys.name.rawValue] ?? UserData.DEFAULT_UNKNOWN
+         self[UserDataKeys.name.rawValue] ?? UserData.DEFAULT_UNKNOWN
     }
 
     func getEmail() -> String? {
-        return self[UserDataKeys.email.rawValue] ?? UserData.DEFAULT_UNKNOWN
+        self[UserDataKeys.email.rawValue] ?? UserData.DEFAULT_UNKNOWN
     }
 }

@@ -73,9 +73,9 @@ struct VideoView: View {
                             
                             Spacer()
                             
-                            VStack(alignment: .leading) {
+                            VideoList(videos: relatedVideos) {
+                                
                                 Text("Related videos")
-                                VideoList(videos: relatedVideos)
                             }
                             
                             Spacer()

@@ -14,6 +14,10 @@ struct UserView: View {
     
     @Binding var showAuthentication: Bool
     
+    @State var showUserVideos = false
+    
+    @StateObject var viewModel = UserViewModel()
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -27,16 +31,21 @@ struct UserView: View {
                         .frame(width: 200, height: 200, alignment: .center)
                     
                     if user.isAuthenticated {
-                        Text(user.userData[UserDataKeys.name.rawValue] ?? "N/A")
+                        Button(action: { showUserVideos.toggle() }, label: {
+                            Text(user.userData.getName() ?? "N/A")
+                            Image(systemName: "chevron.right")
+                        })
                     }
                     
                     Spacer()
                     
                     VStack(alignment: .leading, spacing: 10) {
                         Label(
-                            title: { Button(action: { }, label: {
-                                Text("Settings")
-                            }) },
+                            title: {
+                                Button(action: { }, label: {
+                                    Text("Settings")
+                                })
+                            },
                             icon: { Image(systemName: "gearshape") }
                         )
                         Label(
@@ -92,6 +101,13 @@ struct UserView: View {
                 .padding()
             }
         }
+        .sheet(isPresented: $showUserVideos, content: {
+            NavigationView {
+                SeeAllView(videos: viewModel.userVideos, title: { Text(user.userData.getName() ?? "N/A") })
+            }
+        })
+        .onAppear(perform: viewModel.initListeners)
+        .onDisappear(perform: viewModel.cancelListeners)
     }
 }
 

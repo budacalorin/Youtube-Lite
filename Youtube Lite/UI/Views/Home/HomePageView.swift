@@ -18,15 +18,23 @@ struct HomePageView: View {
             ZStack(alignment: .topLeading) {
                 Gradient.background
                 
-                VStack(alignment: .leading, spacing: 10) {
-                    VideoList(videos: viewModel.allVideos)
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 10) {
+                        VideoList(videos: viewModel.allVideos) {
+                            Text("All")
+                        }
                         .padding(.vertical)
-                
-                    VideoList(videos: viewModel.trending)
+                        
+                        VideoList(videos: viewModel.trending) {
+                            Text("Trending")
+                        }
                         .padding(.vertical)
-                
-                    VideoList(videos: viewModel.popular)
+                        
+                        VideoList(videos: viewModel.popular) {
+                            Text("Popular")
+                        }
                         .padding(.vertical)
+                    }
                 }
             }
             .setNavigationTitle(

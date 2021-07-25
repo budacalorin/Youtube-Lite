@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftUI
 
 func videoComparator(first: Dictionary<String, VideoData>.Element, second: Dictionary<String, VideoData>.Element) -> Bool {
     return first.value["name"] as! String > second.value["name"] as! String

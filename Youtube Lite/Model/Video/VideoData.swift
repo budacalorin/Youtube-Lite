@@ -8,12 +8,12 @@
 import Foundation
 
 enum VideoKeys: String {
-    case url = "url"
-    case userUID = "userUID"
-    case name = "name"
-    case description = "description"
-    case tags = "tags"
-    case stars = "stars"
+    case url
+    case userUID
+    case name
+    case description
+    case tags
+    case stars
 }
 
 typealias VideoData = [String : Any]
@@ -22,21 +22,21 @@ extension VideoData {
     static let DEFAULT_UNKNOWN = ""
     
     func getUrl() -> String {
-        return self[VideoKeys.url.rawValue] as? String ?? VideoData.DEFAULT_UNKNOWN
+        self[VideoKeys.url.rawValue] as? String ?? VideoData.DEFAULT_UNKNOWN
     }
     func getUserUID() -> String {
-        return self[VideoKeys.userUID.rawValue] as? String ?? VideoData.DEFAULT_UNKNOWN
+        self[VideoKeys.userUID.rawValue] as? String ?? VideoData.DEFAULT_UNKNOWN
     }
     func getName() -> String {
-        return self[VideoKeys.name.rawValue] as? String ?? VideoData.DEFAULT_UNKNOWN
+        self[VideoKeys.name.rawValue] as? String ?? VideoData.DEFAULT_UNKNOWN
     }
     func getDescription() -> String {
-        return self[VideoKeys.description.rawValue] as? String ?? VideoData.DEFAULT_UNKNOWN
+        self[VideoKeys.description.rawValue] as? String ?? VideoData.DEFAULT_UNKNOWN
     }
     func getTags() -> [String] {
-        return self[VideoKeys.tags.rawValue] as? [String] ?? []
+        self[VideoKeys.tags.rawValue] as? [String] ?? []
     }
     func getStars() -> Int {
-        return self[VideoKeys.stars.rawValue] as? Int ?? 1
+        self[VideoKeys.stars.rawValue] as? Int ?? 1
     }
 }

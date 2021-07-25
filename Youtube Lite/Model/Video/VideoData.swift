@@ -36,7 +36,10 @@ extension VideoData {
     func getTags() -> [String] {
         self[VideoKeys.tags.rawValue] as? [String] ?? []
     }
-    func getStars() -> Int {
-        self[VideoKeys.stars.rawValue] as? Int ?? 1
+    mutating func setStars(_ newValue: StarsData) {
+        self[VideoKeys.stars.rawValue] = newValue
+    }
+    func getStars() -> StarsData {
+        self[VideoKeys.stars.rawValue] as? StarsData ?? StarsData()
     }
 }

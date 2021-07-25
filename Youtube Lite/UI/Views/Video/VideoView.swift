@@ -17,6 +17,8 @@ struct VideoView: View {
     
     let player: AVPlayer
     
+    @State var currentRating: Int
+    
     @State var presentVideo = false
     
     var body: some View {
@@ -31,9 +33,21 @@ struct VideoView: View {
                         
                         VStack(alignment: .leading) {
                             HStack {
-                                Text("Stars: \(video.videoData.getStars())/5")
+                                Text("Stars: \(video.videoData.getStars().getStars().rounded())/5")
                                 Image(systemName: "star.fill")
                                 Spacer()
+                            }
+                            
+                            HStack {
+                                Text("Rate video:")
+                                RateView(currentRating: $currentRating, onSelection: {
+//                                    video.videoData.getStars().setStart($0, for: User.currentUser.id!)
+                                    var stars = video.videoData.getStars()
+                                    stars.setStart($0, for: User.currentUser.id!)
+                                    video.videoData.setStars(stars)
+                                    FirebaseHelper.shared.videoHelper.updateVideo(video: video)
+                                })
+                                .disabled(!User.currentUser.isAuthenticated)
                             }
                             
                             Text(video.videoData.getName())
@@ -94,6 +108,7 @@ struct VideoView: View {
     }
     
     init(video: Video, relatedVideos: [Video]) {
+        self.currentRating = video.videoData.getStars().getStars(for: User.currentUser.id ?? "") ?? 0
         self.video = video
         self.relatedVideos = relatedVideos
         player = AVPlayer(url: URL(string: video.videoData.getUrl())!)

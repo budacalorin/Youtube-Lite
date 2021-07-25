@@ -107,7 +107,7 @@ struct UploadPageView: View {
                 url: url,
                 userUID: User.currentUser.id!,
                 tags: tags,
-                stars: 0
+                stars: StarsData()
             )
         )
     }

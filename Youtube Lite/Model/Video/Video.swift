@@ -23,7 +23,7 @@ class Video: ObservableObject, Identifiable, Equatable {
         url: String,
         userUID: String,
         tags: [String],
-        stars: Int
+        stars: StarsData
     ) {
         self.id = id
         
@@ -56,6 +56,6 @@ extension Video {
         url: "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mov-file.mov",
         userUID: "sdgdfgsdfr43rt43wfsd",
         tags: ["Tag1", "Tag2"],
-        stars: 4
+        stars: StarsData()
     )
 }

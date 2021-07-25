@@ -33,7 +33,7 @@ class HomeViewModel: CombineViewModel {
             }
         }.store(in: &cancelables)
         
-        filterAndGetVideos(filter: { $0.getStars().getStars() >= 3} )
+        filterAndGetVideos(filter: { $0.getStars().getStars() >= 4} )
         .sink { videos in
             DispatchQueue.main.async {
                 self.popular = videos

@@ -24,14 +24,15 @@ struct SplashScreenView: View {
                     .frame(width: 100, height: 100, alignment: .center)
             }
         }
-        .onAppear {
-            DispatchQueue.main.asyncAfter(
-                deadline: .now() + SplashScreenView.SECCONDS_BEFORE_SWITCH
-            ) {
-                stateController.setState(.mainView)
-            }
+        .onAppear(perform: onAppear)
+    }
+    
+    private func onAppear() {
+        DispatchQueue.main.asyncAfter(
+            deadline: .now() + SplashScreenView.SECCONDS_BEFORE_SWITCH
+        ) {
+            stateController.setState(.mainView)
         }
-        
     }
 }
 

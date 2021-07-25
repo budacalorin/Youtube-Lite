@@ -20,6 +20,7 @@ struct Youtube_LiteApp: App {
     }
     
     init() {
+        UserDefaults.standard.removeObject(forKey: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
         FirebaseApp.configure()
     }
 }

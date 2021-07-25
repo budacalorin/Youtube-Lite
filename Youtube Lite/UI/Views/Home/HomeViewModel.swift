@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 class HomeViewModel: CombineViewModel {
     
@@ -18,18 +19,39 @@ class HomeViewModel: CombineViewModel {
     @Published var popular = [Video]()
     
     override func initListeners() {
-        videos.$videos.map { elements -> [Video] in
-            var allVideos = [Video]()
-            for element in elements {
-                allVideos.append(Video(fromEncoded: element))
-            }
-            return allVideos
-        }.sink { videos in
+        filterAndGetVideos(filter: { _ in true } )
+        .sink { videos in
             DispatchQueue.main.async {
-                self.trending = videos
-                self.popular = videos
                 self.allVideos = videos
             }
         }.store(in: &cancelables)
+        
+        filterAndGetVideos(filter: { $0.getStars() < 3} )
+        .sink { videos in
+            DispatchQueue.main.async {
+                self.trending = videos
+            }
+        }.store(in: &cancelables)
+        
+        filterAndGetVideos(filter: { $0.getStars() >= 3} )
+        .sink { videos in
+            DispatchQueue.main.async {
+                self.popular = videos
+            }
+        }.store(in: &cancelables)
+    }
+    
+    private func filterAndGetVideos(filter: @escaping (VideoData) -> Bool) -> AnyPublisher<[Video], Never> {
+        videos.$videos.map { elements -> [Video] in
+            var returnedList = [Video]()
+            
+            for element in elements {
+                if filter(element.value) {
+                    returnedList.append(Video(fromEncoded: element))
+                }
+            }
+            
+            return returnedList
+        }.eraseToAnyPublisher()
     }
 }

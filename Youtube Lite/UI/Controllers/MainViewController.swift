@@ -34,7 +34,7 @@ struct MainViewController: View {
                 .tag(MainViewController.Tabs.people)
         }
         .sheet(isPresented: $viewModel.showSearch, content: {
-            SearchView()
+            SearchView(isPresented: $viewModel.showSearch)
         })
         .sheet(isPresented: $viewModel.showAuthentication, content: {
             AuthenticationView(isPresented: $viewModel.showAuthentication)

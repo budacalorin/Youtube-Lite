@@ -10,16 +10,15 @@ import FirebaseAuth
 
 class Authenticator {
     
-    func signUp(email: String, password: String, name: String) {
-        Auth.auth().createUser(withEmail: email, password: password) { (authData, error) in
-            if let error = error {
-                print("Failed to create user. Error: \(error)")
-                return
+    func signUp(email: String, password: String, name: String, onCompletion: @escaping (AuthDataResult?, Error?) -> Void) {
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] (authData, error) in
+            if error == nil {
+                self?.changeDisplayName(name) {
+                    User.currentUser.commitChanges()
+                }
             }
             
-            self.changeDisplayName(name) {
-                User.currentUser.commitChanges()
-            }
+            onCompletion(authData, error)
         }
     }
     
@@ -55,12 +54,8 @@ class Authenticator {
         }
     }
     
-    func signIn(email: String, password: String) {
-        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-            if let error = error {
-                print("Error when signing in: \(error)")
-            }
-        }
+    func signIn(email: String, password: String, onCompletion: @escaping (AuthDataResult?, Error?) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password, completion: onCompletion)
     }
     
     func addStateChangeListener(_ listener: @escaping (Auth, FirebaseAuth.User?) -> Void) {

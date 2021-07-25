@@ -13,10 +13,13 @@ struct LoginView: View {
     
     @State var password: String = ""
     
+    @State var errorMessage = ""
+    
+    @State var isProcessing = false
+    
     var body: some View {
         ZStack {
             Gradient.background
-                
             
             VStack {
                 VStack(alignment: .leading) {
@@ -49,8 +52,19 @@ struct LoginView: View {
                 
                 Spacer()
                 
+                LoadingView(errorMessage: $errorMessage, isProcessing: $isProcessing)
+                
                 Button(action: {
-                    FirebaseHelper.shared.authenticator.signIn(email: email, password: password)
+                    isProcessing = true
+                    FirebaseHelper.shared.authenticator.signIn(email: email, password: password) { result, error in
+                        DispatchQueue.main.async {
+                            isProcessing = false
+                            guard error == nil else {
+                                errorMessage = error?.localizedDescription ?? ""
+                                return
+                            }
+                        }
+                    }
                 }, label: {
                     Text("Login").largeButton().padding()
                 })

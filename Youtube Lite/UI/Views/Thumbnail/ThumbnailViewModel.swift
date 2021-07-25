@@ -17,11 +17,9 @@ class ThumbnailViewModel: CombineViewModel {
     func setThumbnail(for video: Video) {
         print("Requesting thumbnail")
         DispatchQueue.global().async { [weak self] in
-            print("234523452")
             if let strongSelf = self {
                 ThumbnailHelper.shared.getThumbnail(forURL: video.videoData.getUrl())
                     .sink { [weak strongSelf] result in
-                        print("Sinking")
                         switch result {
                             case .success(let image): strongSelf?.receivedImage(image)
                                 
@@ -35,14 +33,12 @@ class ThumbnailViewModel: CombineViewModel {
     
     private func receivedImage(_ image: Image) {
         DispatchQueue.main.async { [weak self] in
-            print("setting image \(String(describing: self))")
             self?.image = image
         }
     }
     
     private func receivedFailure(_ error: ThumbnailErrors) {
         DispatchQueue.main.async { [weak self] in
-            print("setting error \(String(describing: self))")
             self?.error = true
         }
     }

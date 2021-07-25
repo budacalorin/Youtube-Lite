@@ -50,6 +50,8 @@
 		055D2B7D26AD83A90023BD62 /* ThumbnailHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055D2B7C26AD83A90023BD62 /* ThumbnailHelper.swift */; };
 		055D2B7F26AD83CF0023BD62 /* OfflineHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055D2B7E26AD83CF0023BD62 /* OfflineHelper.swift */; };
 		055D2B8126AD85A20023BD62 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055D2B8026AD85A20023BD62 /* ImageHelper.swift */; };
+		055D2B8326ADAB360023BD62 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055D2B8226ADAB360023BD62 /* SearchViewModel.swift */; };
+		055D2B8526ADC10E0023BD62 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055D2B8426ADC10D0023BD62 /* LoadingView.swift */; };
 		056A4E2D26A497910094C2C4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4E2C26A497910094C2C4 /* MainViewController.swift */; };
 		056A4E3126A4981A0094C2C4 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4E3026A4981A0094C2C4 /* HomePageView.swift */; };
 		056A4E3326A4982E0094C2C4 /* PeoplePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4E3226A4982E0094C2C4 /* PeoplePageView.swift */; };
@@ -108,6 +110,8 @@
 		055D2B7C26AD83A90023BD62 /* ThumbnailHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailHelper.swift; sourceTree = "<group>"; };
 		055D2B7E26AD83CF0023BD62 /* OfflineHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineHelper.swift; sourceTree = "<group>"; };
 		055D2B8026AD85A20023BD62 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		055D2B8226ADAB360023BD62 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		055D2B8426ADC10D0023BD62 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		056A4E2C26A497910094C2C4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		056A4E3026A4981A0094C2C4 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		056A4E3226A4982E0094C2C4 /* PeoplePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeoplePageView.swift; sourceTree = "<group>"; };
@@ -310,10 +314,11 @@
 				056A4E3626A4A1200094C2C4 /* ViewUtils.swift */,
 				055D2B4126A89D9D0023BD62 /* CombineViewModel.swift */,
 				055D2B4F26A97A240023BD62 /* VideoUtils.swift */,
-				054DE88226A5E6C3006F1A72 /* SideMenu */,
 				055D2B6826AC98330023BD62 /* FullScreenPlayer.swift */,
 				055D2B6C26AD4B1B0023BD62 /* UserUtils.swift */,
 				055D2B7626AD70750023BD62 /* NumberUtils.swift */,
+				055D2B8426ADC10D0023BD62 /* LoadingView.swift */,
+				054DE88226A5E6C3006F1A72 /* SideMenu */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -422,6 +427,7 @@
 			isa = PBXGroup;
 			children = (
 				056A4E3C26A4A5750094C2C4 /* SearchView.swift */,
+				055D2B8226ADAB360023BD62 /* SearchViewModel.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -597,12 +603,14 @@
 				055D2B3E26A88F380023BD62 /* Authenticator.swift in Sources */,
 				056A4E3326A4982E0094C2C4 /* PeoplePageView.swift in Sources */,
 				055D2B5726A9A2DB0023BD62 /* VideoList.swift in Sources */,
+				055D2B8526ADC10E0023BD62 /* LoadingView.swift in Sources */,
 				055D2B4226A89D9D0023BD62 /* CombineViewModel.swift in Sources */,
 				055D2B6726A9AFEF0023BD62 /* Images.swift in Sources */,
 				055D2B5926A9A6C30023BD62 /* ThumbnailView.swift in Sources */,
 				055D2B4426A95BFC0023BD62 /* VideoHelper.swift in Sources */,
 				056A4E2D26A497910094C2C4 /* MainViewController.swift in Sources */,
 				05489EAE26A0CC6B00EFC91E /* AppViewController.swift in Sources */,
+				055D2B8326ADAB360023BD62 /* SearchViewModel.swift in Sources */,
 				055D2B7F26AD83CF0023BD62 /* OfflineHelper.swift in Sources */,
 				055D2B4B26A95CCE0023BD62 /* Video.swift in Sources */,
 				055D2B6D26AD4B1B0023BD62 /* UserUtils.swift in Sources */,

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct UploadPageView: View {
+    @ObservedObject var user = User.currentUser
+    
     @State var name: String = ""
     
     @State var description: String = ""
@@ -23,7 +25,6 @@ struct UploadPageView: View {
     var body: some View {
         ZStack {
             Gradient.background
-            
             
             VStack {
                 FieldView(data: $name, title: "Name", hint: "Enter name here")
@@ -73,13 +74,9 @@ struct UploadPageView: View {
                 }
                 .padding(.horizontal)
                 
-                if !errorMessage.isEmpty {
-                    Text(errorMessage)
-                        .foregroundColor(.red)
-                        .multilineTextAlignment(.center)
-                }
-                
                 Spacer()
+                
+                LoadingView(errorMessage: $errorMessage, isProcessing: .constant(false))
                 
                 Button(action: {
                     pressedUploadButton()
@@ -87,6 +84,29 @@ struct UploadPageView: View {
                     Text("Upload").largeButton().padding()
                 })
             }
+            .disabled(!user.isAuthenticated)
+            
+            if (!user.isAuthenticated) {
+                Gradient.background.opacity(0.5)
+                
+                Text("You have to be authenticated to post videos. Please go to profile page and sign up.")
+                    .fixedSize(horizontal: false, vertical: true)
+                    .font(.title)
+                    .foregroundColor(.colorOnAccent)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                    .background(Color.accent.cornerRadius(3.0 ))
+                
+            }
+        }
+    }
+    
+    private func resetVariables() {
+        DispatchQueue.main.async {
+            name = ""
+            description = ""
+            url = ""
+            tags = []
         }
     }
     
@@ -95,8 +115,14 @@ struct UploadPageView: View {
               !description.isEmpty,
               !url.isEmpty,
               User.currentUser.id != nil else {
-            errorMessage = "The data you entered is invalid"
+            DispatchQueue.main.async {
+                errorMessage = "The data you entered is invalid"
+            }
             return
+        }
+        
+        DispatchQueue.main.async {
+            errorMessage = "Posted!"
         }
         
         FirebaseHelper.shared.videoHelper.updateVideo(
@@ -105,11 +131,13 @@ struct UploadPageView: View {
                 name: name,
                 description: description,
                 url: url,
-                userUID: User.currentUser.id!,
+                userUID: user.id!,
                 tags: tags,
                 stars: StarsData()
             )
         )
+        
+        resetVariables()
     }
     
     init() {

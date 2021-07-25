@@ -41,7 +41,7 @@ struct VideoView: View {
                             HStack {
                                 Text("Rate video:")
                                 RateView(currentRating: $currentRating, onSelection: {
-//                                    video.videoData.getStars().setStart($0, for: User.currentUser.id!)
+                                    //                                    video.videoData.getStars().setStart($0, for: User.currentUser.id!)
                                     var stars = video.videoData.getStars()
                                     stars.setStart($0, for: User.currentUser.id!)
                                     video.videoData.setStars(stars)
@@ -71,30 +71,35 @@ struct VideoView: View {
                                 }
                             }
                             
-                            HStack {
-                                Circle()
-                                    .frame(width: 50, height: 50)
-                                    .foregroundColor(.accent)
-                                
-                                VStack(alignment: .leading) {
-                                    Text("Author:")
-                                        .foregroundColor(.colorOnPrimary)
-                                    Text(FirebaseHelper.shared.usersHelper.getUserName(forUID: video.videoData.getUserUID()) ?? "UNKNOWN")
+                            let userName = FirebaseHelper.shared.usersHelper.getUserName(forUID: video.videoData.getUserUID()) ?? "UNKNOWN"
+                            
+                            NavigationLink(
+                                destination: SeeAllView(
+                                    videos: FirebaseHelper.shared.getUserVideos(for: video.videoData.getUserUID()),
+                                    title: { Text(userName) }
+                                ),
+                                label: {
+                                    HStack {
+                                        Circle()
+                                            .frame(width: 50, height: 50)
+                                            .foregroundColor(.accent)
+                                        
+                                        VStack(alignment: .leading) {
+                                            Text("Author:")
+                                                .foregroundColor(.colorOnPrimary)
+                                            Text(userName)
+                                        }
+                                        
+                                        Spacer()
+                                    }
                                 }
-                                
-                                Spacer()
-                            }
-                            
-                            Spacer()
-                            
-                            VideoList(videos: relatedVideos) {
-                                
-                                Text("Related videos")
-                            }
-                            
-                            Spacer()
+                            )
                         }
                         .padding()
+                        
+                        VideoList(videos: relatedVideos) {
+                            Text("Related videos")
+                        }
                     }
                 }
             }

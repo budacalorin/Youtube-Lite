@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		051F8EB926AF253800E9A056 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051F8EB826AF253800E9A056 /* SignupViewModel.swift */; };
+		051F8EBB26AF25DB00E9A056 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051F8EBA26AF25DB00E9A056 /* LoginViewModel.swift */; };
+		051F8EBD26AF299700E9A056 /* SplashScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051F8EBC26AF299700E9A056 /* SplashScreenViewModel.swift */; };
 		05489E9B26A0C8F800EFC91E /* Youtube_LiteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05489E9A26A0C8F800EFC91E /* Youtube_LiteApp.swift */; };
 		05489E9F26A0C8FA00EFC91E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05489E9E26A0C8FA00EFC91E /* Assets.xcassets */; };
 		05489EA226A0C8FA00EFC91E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05489EA126A0C8FA00EFC91E /* Preview Assets.xcassets */; };
@@ -66,6 +69,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		051F8EB826AF253800E9A056 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
+		051F8EBA26AF25DB00E9A056 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		051F8EBC26AF299700E9A056 /* SplashScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewModel.swift; sourceTree = "<group>"; };
 		05489E9726A0C8F800EFC91E /* Youtube Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Youtube Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05489E9A26A0C8F800EFC91E /* Youtube_LiteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Youtube_LiteApp.swift; sourceTree = "<group>"; };
 		05489E9E26A0C8FA00EFC91E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -140,6 +146,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		051F8EBE26AF2E5300E9A056 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				05489EAD26A0CC6B00EFC91E /* AppViewController.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		051F8EBF26AF2E5700E9A056 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				056A4E2C26A497910094C2C4 /* MainViewController.swift */,
+				055D2B3F26A897D50023BD62 /* MainViewModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		05489E8E26A0C8F800EFC91E = {
 			isa = PBXGroup;
 			children = (
@@ -161,12 +184,12 @@
 		05489E9926A0C8F800EFC91E /* Youtube Lite */ = {
 			isa = PBXGroup;
 			children = (
-				055D2B6026A9AE120023BD62 /* SupportingFiles */,
-				055D2B5E26A9ADB50023BD62 /* Utils */,
+				055D2B5D26A9AD690023BD62 /* Model */,
 				055D2B7B26AD83940023BD62 /* Offline */,
 				055D2B3026A88B540023BD62 /* Online */,
-				055D2B5D26A9AD690023BD62 /* Model */,
+				055D2B6026A9AE120023BD62 /* SupportingFiles */,
 				05489EA926A0C92700EFC91E /* UI */,
+				055D2B5E26A9ADB50023BD62 /* Utils */,
 			);
 			path = "Youtube Lite";
 			sourceTree = "<group>";
@@ -191,9 +214,8 @@
 		05489EAC26A0CC5400EFC91E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				05489EAD26A0CC6B00EFC91E /* AppViewController.swift */,
-				056A4E2C26A497910094C2C4 /* MainViewController.swift */,
-				055D2B3F26A897D50023BD62 /* MainViewModel.swift */,
+				051F8EBE26AF2E5300E9A056 /* App */,
+				051F8EBF26AF2E5700E9A056 /* Main */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -202,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				05489EB526A0CF6000EFC91E /* SplashScreenView.swift */,
+				051F8EBC26AF299700E9A056 /* SplashScreenViewModel.swift */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -228,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				054DE88E26A5ECE9006F1A72 /* LoginView.swift */,
+				051F8EBA26AF25DB00E9A056 /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -236,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				054DE88B26A5ECDE006F1A72 /* SignupView.swift */,
+				051F8EB826AF253800E9A056 /* SignupViewModel.swift */,
 			);
 			path = Signup;
 			sourceTree = "<group>";
@@ -339,17 +364,17 @@
 		055D2B6126A9AE4C0023BD62 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				055D2B5A26A9A6E00023BD62 /* Thumbnail */,
-				055D2B7826AD71C00023BD62 /* Rating */,
-				055D2B6E26AD55B00023BD62 /* SeeAll */,
-				055D2B5326A99A4B0023BD62 /* Video */,
 				056A4E4226A4A7A60094C2C4 /* Authentication */,
-				056A4E3B26A4A56A0094C2C4 /* Search */,
-				056A4E3826A4A3C00094C2C4 /* User */,
-				056A4E2F26A498070094C2C4 /* Upload */,
-				056A4E2E26A497F60094C2C4 /* People */,
 				056A4E2B26A497770094C2C4 /* Home */,
+				056A4E2E26A497F60094C2C4 /* People */,
+				055D2B7826AD71C00023BD62 /* Rating */,
+				056A4E3B26A4A56A0094C2C4 /* Search */,
+				055D2B6E26AD55B00023BD62 /* SeeAll */,
 				05489EB426A0CF4900EFC91E /* Splash */,
+				055D2B5A26A9A6E00023BD62 /* Thumbnail */,
+				056A4E2F26A498070094C2C4 /* Upload */,
+				056A4E3826A4A3C00094C2C4 /* User */,
+				055D2B5326A99A4B0023BD62 /* Video */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -608,6 +633,7 @@
 				055D2B6726A9AFEF0023BD62 /* Images.swift in Sources */,
 				055D2B5926A9A6C30023BD62 /* ThumbnailView.swift in Sources */,
 				055D2B4426A95BFC0023BD62 /* VideoHelper.swift in Sources */,
+				051F8EBD26AF299700E9A056 /* SplashScreenViewModel.swift in Sources */,
 				056A4E2D26A497910094C2C4 /* MainViewController.swift in Sources */,
 				05489EAE26A0CC6B00EFC91E /* AppViewController.swift in Sources */,
 				055D2B8326ADAB360023BD62 /* SearchViewModel.swift in Sources */,
@@ -617,6 +643,7 @@
 				055D2B6926AC98330023BD62 /* FullScreenPlayer.swift in Sources */,
 				055D2B7026AD55BF0023BD62 /* SeeAllView.swift in Sources */,
 				055D2B7526AD69B70023BD62 /* StarsData.swift in Sources */,
+				051F8EB926AF253800E9A056 /* SignupViewModel.swift in Sources */,
 				056A4E3526A4983B0094C2C4 /* UploadPageView.swift in Sources */,
 				055D2B7D26AD83A90023BD62 /* ThumbnailHelper.swift in Sources */,
 				055D2B4E26A95E720023BD62 /* DatabaseHelper.swift in Sources */,
@@ -634,6 +661,7 @@
 				056A4E3A26A4A3CA0094C2C4 /* UserView.swift in Sources */,
 				055D2B7A26AD71CC0023BD62 /* RateView.swift in Sources */,
 				056A4E3126A4981A0094C2C4 /* HomePageView.swift in Sources */,
+				051F8EBB26AF25DB00E9A056 /* LoginViewModel.swift in Sources */,
 				054DE88F26A5ECE9006F1A72 /* LoginView.swift in Sources */,
 				056A4E4426A4A7B10094C2C4 /* AuthenticationView.swift in Sources */,
 				055D2B5526A99A590023BD62 /* VideoView.swift in Sources */,

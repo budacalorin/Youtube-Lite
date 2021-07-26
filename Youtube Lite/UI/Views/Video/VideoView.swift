@@ -11,15 +11,15 @@ import AVKit
 
 struct VideoView: View {
     
-    let video: Video
+    private let video: Video
     
-    let relatedVideos: [Video]
+    private let relatedVideos: [Video]
     
-    let player: AVPlayer
+    private let player: AVPlayer
     
-    @State var currentRating: Int
+    @State private var currentRating: Int
     
-    @State var presentVideo = false
+    @State private var presentVideo = false
     
     var body: some View {
         GeometryReader { geometry in

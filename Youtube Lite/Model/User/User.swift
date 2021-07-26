@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import FirebaseAuth
 
 class User: ObservableObject, Identifiable {
     static let currentUser = User()
@@ -19,24 +20,37 @@ class User: ObservableObject, Identifiable {
     
     private init() {
         startListeningForUserChanges()
+        fetchUserData()
     }
     
     private func startListeningForUserChanges() {
-        FirebaseHelper.shared.authenticator.addStateChangeListener({ (auth, user) in
+        FirebaseHelper.shared.authenticator.addStateChangeListener({ [weak self] (auth, user) in
             guard let user = user else {
                 print("Failed to retreive user.")
                 DispatchQueue.main.async {
-                    self.removeSigninData()
+                    self?.removeSigninData()
                 }
                 return
             }
             
-            self.userData[UserDataKeys.email.rawValue] = user.email
-            self.userData[UserDataKeys.name.rawValue] = user.displayName
-            self.id = user.uid
-            
-            DispatchQueue.main.async { self.isAuthenticated = true }
+            self?.authenticate(with: user)
         })
+    }
+    
+    private func authenticate(with data: FirebaseAuth.User) {
+        userData[UserDataKeys.email.rawValue] = data.email
+        userData[UserDataKeys.name.rawValue] = data.displayName
+        id = data.uid
+        
+        DispatchQueue.main.async { self.isAuthenticated = true }
+    }
+    
+    func fetchUserData() {
+        guard let user = FirebaseHelper.shared.authenticator.getCurrentUser() else {
+            print("Could not fetch user data. Not logged in")
+            return
+        }
+        authenticate(with: user)
     }
     
     private func removeSigninData() {

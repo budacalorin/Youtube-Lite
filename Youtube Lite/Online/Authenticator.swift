@@ -70,4 +70,12 @@ class Authenticator {
             print("Failed to sign out. Error \(error)")
         }
     }
+    
+    func getCurrentUser() -> FirebaseAuth.User? {
+        guard let user = Auth.auth().currentUser  else {
+            print("Client is not logged in")
+            return nil
+        }
+        return user
+    }
 }

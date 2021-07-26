@@ -11,7 +11,9 @@ import iActivityIndicator
 struct SplashScreenView: View {
     @EnvironmentObject var stateController: MainStateController
     
-    static let SECCONDS_BEFORE_SWITCH = 1.0
+    @StateObject private var viewModel = SplashScreenViewModel()
+    
+    private static let SECCONDS_BEFORE_SWITCH = 1
     
     var body: some View {
         ZStack {
@@ -28,11 +30,24 @@ struct SplashScreenView: View {
     }
     
     private func onAppear() {
-        DispatchQueue.main.asyncAfter(
-            deadline: .now() + SplashScreenView.SECCONDS_BEFORE_SWITCH
-        ) {
-            stateController.setState(.mainView)
+        DispatchQueue.global().async {
+            let timeBefore = DispatchTime.now().uptimeNanoseconds
+            
+            viewModel.prepareApp()
+            
+            let diff = DispatchTime.now().uptimeNanoseconds - timeBefore
+            
+            if diff < (SplashScreenView.SECCONDS_BEFORE_SWITCH * 1000000000) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + Double(SplashScreenView.SECCONDS_BEFORE_SWITCH)) {
+                    stateController.setState(.mainView)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    stateController.setState(.mainView)
+                }
+            }
         }
+            
     }
 }
 

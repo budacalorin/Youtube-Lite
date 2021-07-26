@@ -15,9 +15,8 @@ class MainViewModel: CombineViewModel {
 
     override func initListeners() {
         User.currentUser.$isAuthenticated
-            .debounce(for: 1, scheduler: RunLoop.main)
-            .sink { newValue in
-                DispatchQueue.main.async { self.showAuthentication = !newValue }
+            .sink { [weak self] newValue in
+                DispatchQueue.main.async { self?.showAuthentication = !newValue }
             }
             .store(in: &cancelables)
     }

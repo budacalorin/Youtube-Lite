@@ -9,13 +9,8 @@ import SwiftUI
 import FirebaseAuth
 
 struct LoginView: View {
-    @State var email: String = ""
     
-    @State var password: String = ""
-    
-    @State var errorMessage = ""
-    
-    @State var isProcessing = false
+    @StateObject private var viewModel = LoginViewModel()
     
     var body: some View {
         ZStack {
@@ -26,7 +21,7 @@ struct LoginView: View {
                         Text("Email address")
                             .font(.italic(.body)())
                         
-                        TextField("Enter email here", text: $email)
+                        TextField("Enter email here", text: $viewModel.email)
                             .textContentType(.emailAddress)
                             .autocapitalization(.none)
                             .foregroundColor(.colorOnAccent)
@@ -41,7 +36,7 @@ struct LoginView: View {
                         Text("Password")
                             .font(.italic(.body)())
                         
-                        SecureField("Enter password here", text: $password)
+                        SecureField("Enter password here", text: $viewModel.password)
                             .autocapitalization(.none)
                             .foregroundColor(.colorOnAccent)
                             .padding()
@@ -52,21 +47,12 @@ struct LoginView: View {
                     
                     Spacer()
                     
-                    LoadingView(errorMessage: $errorMessage, isProcessing: $isProcessing)
+                    LoadingView(errorMessage: $viewModel.errorMessage, isProcessing: $viewModel.isProcessing)
                     
-                    Button(action: {
-                        isProcessing = true
-                        FirebaseHelper.shared.authenticator.signIn(email: email, password: password) { result, error in
-                            DispatchQueue.main.async {
-                                isProcessing = false
-                                guard error == nil else {
-                                    errorMessage = error?.localizedDescription ?? ""
-                                    return
-                                }
-                            }
-                        }
-                    }, label: {
-                        Text("Login").largeButton().padding()
+                    Button(
+                        action: viewModel.pressedLogin,
+                        label: {
+                            Text("Login").largeButton().padding()
                     })
                 }
             }

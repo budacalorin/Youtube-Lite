@@ -8,15 +8,8 @@
 import SwiftUI
 
 struct SignupView: View {
-    @State var name: String = ""
     
-    @State var email: String = ""
-    
-    @State var password: String = ""
-    
-    @State var errorMessage = ""
-    
-    @State var isProcessing = false
+    @StateObject private var viewModel = SignupViewModel()
     
     var body: some View {
         ZStack {
@@ -28,7 +21,7 @@ struct SignupView: View {
                         Text("Name")
                             .font(.italic(.body)())
                         
-                        TextField("Enter name here", text: $name)
+                        TextField("Enter name here", text: $viewModel.name)
                             .textContentType(.emailAddress)
                             .autocapitalization(.none)
                             .foregroundColor(.colorOnAccent)
@@ -42,7 +35,7 @@ struct SignupView: View {
                         Text("Email address")
                             .font(.italic(.body)())
                         
-                        TextField("Enter email here", text: $email)
+                        TextField("Enter email here", text: $viewModel.email)
                             .textContentType(.emailAddress)
                             .autocapitalization(.none)
                             .foregroundColor(.colorOnAccent)
@@ -57,7 +50,7 @@ struct SignupView: View {
                         Text("Password")
                             .font(.italic(.body)())
                         
-                        SecureField("Enter password here", text: $password)
+                        SecureField("Enter password here", text: $viewModel.password)
                             .autocapitalization(.none)
                             .foregroundColor(.colorOnAccent)
                             .padding()
@@ -68,21 +61,12 @@ struct SignupView: View {
                     
                     Spacer()
                     
-                    LoadingView(errorMessage: $errorMessage, isProcessing: $isProcessing)
+                    LoadingView(errorMessage: $viewModel.errorMessage, isProcessing: $viewModel.isProcessing)
                     
-                    Button(action: {
-                        isProcessing = true
-                        FirebaseHelper.shared.authenticator.signUp(email: email, password: password, name: name) { result, error in
-                            DispatchQueue.main.async {
-                                isProcessing = false
-                                guard error == nil else {
-                                    errorMessage = error!.localizedDescription
-                                    return
-                                }
-                            }
-                        }
-                    }, label: {
-                        Text("Sign Up").largeButton().padding()
+                    Button(
+                        action: viewModel.pressedSignup,
+                        label: {
+                            Text("Sign Up").largeButton().padding()
                     })
                 }
                 .onTapGesture(perform: hideKeyboard)

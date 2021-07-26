@@ -22,67 +22,70 @@ struct SignupView: View {
         ZStack {
             Gradient.background
             
-            VStack {
-                VStack(alignment: .leading) {
-                    Text("Name")
-                        .font(.italic(.body)())
+            ScrollView {
+                VStack {
+                    VStack(alignment: .leading) {
+                        Text("Name")
+                            .font(.italic(.body)())
+                        
+                        TextField("Enter name here", text: $name)
+                            .textContentType(.emailAddress)
+                            .autocapitalization(.none)
+                            .foregroundColor(.colorOnAccent)
+                            .padding()
+                            .background(Color.formField)
+                            .cornerRadius(3.0)
+                    }
+                    .padding()
                     
-                    TextField("Enter name here", text: $name)
-                        .textContentType(.emailAddress)
-                        .autocapitalization(.none)
-                        .foregroundColor(.colorOnAccent)
-                        .padding()
-                        .background(Color.formField)
-                        .cornerRadius(3.0)
-                }
-                .padding()
-                
-                VStack(alignment: .leading) {
-                    Text("Email address")
-                        .font(.italic(.body)())
+                    VStack(alignment: .leading) {
+                        Text("Email address")
+                            .font(.italic(.body)())
+                        
+                        TextField("Enter email here", text: $email)
+                            .textContentType(.emailAddress)
+                            .autocapitalization(.none)
+                            .foregroundColor(.colorOnAccent)
+                            .padding()
+                            .background(Color.formField)
+                            .cornerRadius(3.0)
+                            .disableAutocorrection(true)
+                    }
+                    .padding()
                     
-                    TextField("Enter email here", text: $email)
-                        .textContentType(.emailAddress)
-                        .autocapitalization(.none)
-                        .foregroundColor(.colorOnAccent)
-                        .padding()
-                        .background(Color.formField)
-                        .cornerRadius(3.0)
-                        .disableAutocorrection(true)
-                }
-                .padding()
-                
-                VStack(alignment: .leading) {
-                    Text("Password")
-                        .font(.italic(.body)())
+                    VStack(alignment: .leading) {
+                        Text("Password")
+                            .font(.italic(.body)())
+                        
+                        SecureField("Enter password here", text: $password)
+                            .autocapitalization(.none)
+                            .foregroundColor(.colorOnAccent)
+                            .padding()
+                            .background(Color.formField)
+                            .cornerRadius(3.0)
+                    }
+                    .padding()
                     
-                    SecureField("Enter password here", text: $password)
-                        .autocapitalization(.none)
-                        .foregroundColor(.colorOnAccent)
-                        .padding()
-                        .background(Color.formField)
-                        .cornerRadius(3.0)
-                }
-                .padding()
-                
-                Spacer()
-                
-                LoadingView(errorMessage: $errorMessage, isProcessing: $isProcessing)
-                
-                Button(action: {
-                    isProcessing = true
-                    FirebaseHelper.shared.authenticator.signUp(email: email, password: password, name: name) { result, error in
-                        DispatchQueue.main.async {
-                            isProcessing = false
-                            guard error == nil else {
-                                errorMessage = error!.localizedDescription
-                                return
+                    Spacer()
+                    
+                    LoadingView(errorMessage: $errorMessage, isProcessing: $isProcessing)
+                    
+                    Button(action: {
+                        isProcessing = true
+                        FirebaseHelper.shared.authenticator.signUp(email: email, password: password, name: name) { result, error in
+                            DispatchQueue.main.async {
+                                isProcessing = false
+                                guard error == nil else {
+                                    errorMessage = error!.localizedDescription
+                                    return
+                                }
                             }
                         }
-                    }
-                }, label: {
-                    Text("Sign Up").largeButton().padding()
-                })
+                    }, label: {
+                        Text("Sign Up").largeButton().padding()
+                    })
+                }
+                .onTapGesture(perform: hideKeyboard)
             }
         }
     }

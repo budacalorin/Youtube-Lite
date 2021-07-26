@@ -25,19 +25,21 @@ struct UploadPageView: View {
     var body: some View {
         ZStack {
             Gradient.background
-            
-            VStack {
-                FieldView(data: $name, title: "Name", hint: "Enter name here")
-                
-                FieldView(data: $description, title: "Description", hint: "Enter description here")
-                
-                FieldView(data: $url, title: "Video URL", hint: "Enter video URL here")
-                
-                VStack(alignment: .leading) {
-                    Text("Tags")
-                        .font(.italic(.body)())
+                .onTapGesture(perform: hideKeyboard)
+//
+//            ScrollView {
+                VStack {
+                    FieldView(data: $name, title: "Name", hint: "Enter name here")
                     
-                    List {
+                    FieldView(data: $description, title: "Description", hint: "Enter description here")
+                    
+                    FieldView(data: $url, title: "Video URL", hint: "Enter video URL here")
+                    
+                    VStack(alignment: .leading, spacing: 1) {
+                        Text("Tags")
+                            .font(.italic(.body)())
+                            .padding(.bottom)
+                        
                         ForEach(tags.indices, id: \.self) { index in
                             let tag = tags[index]
                             
@@ -47,12 +49,17 @@ struct UploadPageView: View {
                                 
                                 Spacer()
                                 
-                                Button(action: { tags.remove(at: index) }, label: {
+                                Button(action: {
+                                    DispatchQueue.main.async {
+                                        tags.remove(at: index)
+                                    }
+                                }, label: {
                                     Image(systemName: "minus")
                                 })
                             }
                         }
-                        .listRowBackground(Color.formField.cornerRadius(3.0))
+                        .padding()
+                        .background(Color.formField.cornerRadius(3.0))
                         
                         HStack {
                             TextField("Enter new tag here", text: $newTag)
@@ -61,28 +68,32 @@ struct UploadPageView: View {
                             Spacer()
                             
                             Button(action: {
-                                withAnimation {
-                                    if !newTag.isEmpty { tags.append(newTag) }
-                                    newTag = ""
+                                DispatchQueue.main.async {
+                                    withAnimation {
+                                        if !newTag.isEmpty { tags.append(newTag) }
+                                        newTag = ""
+                                    }
                                 }
                             }, label: {
                                 Image(systemName: "plus")
                             })
                         }
-                        .listRowBackground(Color.formField.cornerRadius(3.0))
+                        .padding()
+                        .background(Color.formField.cornerRadius(3.0))
+                        
+                        Spacer()
+                        
+                        LoadingView(errorMessage: $errorMessage, isProcessing: .constant(false))
                     }
-                }
-                .padding(.horizontal)
-                
-                Spacer()
-                
-                LoadingView(errorMessage: $errorMessage, isProcessing: .constant(false))
-                
-                Button(action: {
-                    pressedUploadButton()
-                }, label: {
-                    Text("Upload").largeButton().padding()
-                })
+                    .padding(.horizontal)
+                    
+                    
+                    Button(action: {
+                        pressedUploadButton()
+                    }, label: {
+                        Text("Upload").largeButton().padding()
+                    })
+//                }
             }
             .disabled(!user.isAuthenticated)
             
@@ -96,6 +107,7 @@ struct UploadPageView: View {
                     .multilineTextAlignment(.center)
                     .padding()
                     .background(Color.accent.cornerRadius(3.0 ))
+                    .padding()
                 
             }
         }
@@ -115,11 +127,11 @@ struct UploadPageView: View {
               !description.isEmpty,
               !url.isEmpty,
               User.currentUser.id != nil else {
-            DispatchQueue.main.async {
-                errorMessage = "The data you entered is invalid"
-            }
-            return
-        }
+                  DispatchQueue.main.async {
+                      errorMessage = "The data you entered is invalid"
+                  }
+                  return
+              }
         
         DispatchQueue.main.async {
             errorMessage = "Posted!"

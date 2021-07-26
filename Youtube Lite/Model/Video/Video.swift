@@ -1,5 +1,5 @@
 //
-//  ViewData.swift
+//  View.swift
 //  Youtube Lite
 //
 //  Created by Lorin Budaca on 22.07.2021.

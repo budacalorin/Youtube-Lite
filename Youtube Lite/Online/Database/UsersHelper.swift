@@ -12,6 +12,10 @@ class UsersHelper: DatabaseHelper, ObservableObject {
     
     private(set) var didFirstRead = false
     
+    private static let DB_NAME = "users"
+
+    private lazy var databasePath: DatabaseReference = database.child(UsersHelper.DB_NAME)
+    
     @Published var users: [String: UserData]? = [:]
     
     override init() {
@@ -21,17 +25,17 @@ class UsersHelper: DatabaseHelper, ObservableObject {
     }
     
     func updateUser(_ user: User) {
-        database.child("users").child(user.id!).setValue(user.userData)
+        databasePath.child(user.id!).setValue(user.userData)
     }
     
     func startUserListener() {
-        database.child("users").observe(.value) { [weak self] snapshot in
+        databasePath.observe(.value) { [weak self] snapshot in
             self?.processUsersSnapshot(snapshot)
         }
     }
     
     func readUsers() {
-        database.child("users").getData { [weak self] error, snapshot in
+        databasePath.getData { [weak self] error, snapshot in
             if let error = error {
                 print("Failed to read users. Error: \(error)")
                 return
@@ -50,7 +54,7 @@ class UsersHelper: DatabaseHelper, ObservableObject {
     }
     
     func writeUsers() {
-        database.child("users").setValue(users)
+        databasePath.setValue(users)
     }
     
     func getUserName(forUID uid: String) -> String? {

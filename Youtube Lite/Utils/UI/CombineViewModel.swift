@@ -9,12 +9,12 @@ import Foundation
 import Combine
 
 class CombineViewModel: ObservableObject {
-    var cancelables = Set<AnyCancellable>()
+    var cancellables = Set<AnyCancellable>()
     
     func initListeners() { }
     
     func cancelListeners() {
-        cancelables.forEach { $0.cancel() }
-        cancelables.removeAll()
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
     }
 }

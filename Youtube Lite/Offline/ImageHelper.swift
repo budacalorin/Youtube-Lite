@@ -20,7 +20,7 @@ class ImageHelper {
         }
         
         guard let uiImage = UIImage(data: data) else {
-            print("Failed to produce uiimage from data")
+            print("Failed to produce ui image from data")
             return nil
         }
         

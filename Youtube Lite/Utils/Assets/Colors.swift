@@ -28,4 +28,6 @@ extension Color {
     static let formField = Color("FormField")
     
     static let secondary = Color("Secondary")
+    
+    static let colorOnSecondary = Color("ColorOnSecondary")
 }

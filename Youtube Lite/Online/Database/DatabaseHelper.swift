@@ -9,7 +9,5 @@ import Foundation
 import FirebaseDatabase
 
 class DatabaseHelper {
-    
     let database = Database.database().reference()
-    
 }

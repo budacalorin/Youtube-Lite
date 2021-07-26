@@ -34,7 +34,7 @@ class UserViewModel: CombineViewModel {
                     self?.userVideos = []
                 }
             }
-        }.store(in: &cancelables)
+        }.store(in: &cancellables)
     }
     
     private func cancelVideoListeners() {

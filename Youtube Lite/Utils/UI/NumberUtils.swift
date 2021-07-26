@@ -8,7 +8,6 @@
 import Foundation
 
 extension Double {
-    
     func rounded() -> String {
         String(format: "%.1f", self)
     }

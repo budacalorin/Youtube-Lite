@@ -11,12 +11,6 @@ import Combine
 class PeopleViewModel: CombineViewModel {
     @Published var userVideos: [String : [Video]] = [:]
     
-    override init() {
-        super.init()
-        
-        
-    }
-    
     override func initListeners() {
         FirebaseHelper.shared.usersHelper.$users
             .sink { [weak self] users in
@@ -27,18 +21,18 @@ class PeopleViewModel: CombineViewModel {
                 
                 DispatchQueue.main.async { [weak self] in
                     users?.keys.forEach { userId in
-                        self?.userVideos[userId] = FirebaseHelper.shared.getUserVideos(for: userId)
+                        self?.userVideos[userId] = FirebaseHelper.shared.videoHelper.getUserVideos(for: userId)
                     }
                 }
-            }.store(in: &cancelables)
+            }.store(in: &cancellables)
         
         FirebaseHelper.shared.videoHelper.$videos
             .sink { [weak self] videos in
                 DispatchQueue.main.async { [weak self] in
                     videos.map { $0.value.getUserUID() }.forEach { userId in
-                        self?.userVideos[userId] = FirebaseHelper.shared.getUserVideos(for: userId)
+                        self?.userVideos[userId] = FirebaseHelper.shared.videoHelper.getUserVideos(for: userId)
                     }
                 }
-            }.store(in: &cancelables)
+            }.store(in: &cancellables)
     }
 }

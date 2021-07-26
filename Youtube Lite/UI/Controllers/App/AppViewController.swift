@@ -18,8 +18,6 @@ struct AppViewController: View {
                 MainViewController()
         }
     }
-    
-    
 }
 
 struct MainViewController_Previews: PreviewProvider {

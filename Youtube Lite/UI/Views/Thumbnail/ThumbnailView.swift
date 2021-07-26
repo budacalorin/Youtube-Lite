@@ -28,11 +28,11 @@ struct ThumbnailView: View {
                     Image(systemName: "questionmark")
                         .scaledToFit()
                         .frame(width: 10)
-                        .foregroundColor(.white)
+                        .foregroundColor(.colorOnSecondary)
                 } else {
                     iActivityIndicator(style: .rotatingShapes())
                         .frame(width: 10, height: 10)
-                        .foregroundColor(.white)
+                        .foregroundColor(.colorOnSecondary)
                 }
             }
             .onAppear { viewModel.setThumbnail(for: video) }

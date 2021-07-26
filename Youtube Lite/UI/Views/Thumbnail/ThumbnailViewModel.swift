@@ -26,7 +26,7 @@ class ThumbnailViewModel: CombineViewModel {
                             case .failure(let error): strongSelf?.receivedFailure(error)
                         }
                     }
-                    .store(in: &strongSelf.cancelables)
+                    .store(in: &strongSelf.cancellables)
             }
         }
     }

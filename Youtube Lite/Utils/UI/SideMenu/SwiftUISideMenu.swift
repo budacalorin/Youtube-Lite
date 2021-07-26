@@ -21,7 +21,6 @@ public struct SideMenu<MenuContent: View>: ViewModifier {
         return GeometryReader { geometry in
             ZStack(alignment: .leading) {
                 content
-//                    .disabled(isShowing)
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .offset(x: self.isShowing ? geometry.size.width / 1.5 : 0)
                 

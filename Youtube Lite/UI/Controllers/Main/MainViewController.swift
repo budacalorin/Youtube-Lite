@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainViewController: View {
     
-    @State var currentTab: Tabs = .home
+    @State private var currentTab: Tabs = .home
     
     @StateObject var viewModel = MainViewModel()
     
@@ -21,7 +21,7 @@ struct MainViewController: View {
                 }
                 .tag(MainViewController.Tabs.home)
             
-            UploadPageView()
+            UploadPageView(showUser: $viewModel.showUser, showSearch: $viewModel.showSearch)
                 .tabItem {
                     getUploadViewTabItem()
                 }
@@ -71,14 +71,10 @@ struct MainViewController: View {
         }
     }
     
-    enum Tabs {
+    private enum Tabs {
         case home
         case upload
         case people
-    }
-    
-    init() {
-        
     }
 }
 

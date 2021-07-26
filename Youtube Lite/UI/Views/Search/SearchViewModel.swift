@@ -19,7 +19,7 @@ class SearchViewModel: CombineViewModel {
             .sink { [weak self] videos in
                 self?.allVideos = videos.map{ Video(fromEncoded: $0) }
             }
-            .store(in: &cancelables)
+            .store(in: &cancellables)
         
         $currentSearch
             .debounce(for: 0.5, scheduler: DispatchQueue.global())
@@ -35,6 +35,6 @@ class SearchViewModel: CombineViewModel {
                     }
                 }
             }
-            .store(in: &cancelables)
+            .store(in: &cancellables)
     }
 }

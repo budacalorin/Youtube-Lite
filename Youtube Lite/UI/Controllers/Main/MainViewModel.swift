@@ -18,6 +18,6 @@ class MainViewModel: CombineViewModel {
             .sink { [weak self] newValue in
                 DispatchQueue.main.async { self?.showAuthentication = !newValue }
             }
-            .store(in: &cancelables)
+            .store(in: &cancellables)
     }
 }

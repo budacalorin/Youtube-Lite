@@ -65,7 +65,6 @@ class Authenticator {
     func signOut() {
         do {
             try Auth.auth().signOut()
-            
         } catch {
             print("Failed to sign out. Error \(error)")
         }

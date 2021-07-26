@@ -13,7 +13,7 @@ struct SplashScreenView: View {
     
     @StateObject private var viewModel = SplashScreenViewModel()
     
-    private static let SECCONDS_BEFORE_SWITCH = 1
+    private static let SECONDS_BEFORE_SWITCH = 1
     
     var body: some View {
         ZStack {
@@ -37,8 +37,8 @@ struct SplashScreenView: View {
             
             let diff = DispatchTime.now().uptimeNanoseconds - timeBefore
             
-            if diff < (SplashScreenView.SECCONDS_BEFORE_SWITCH * 1000000000) {
-                DispatchQueue.main.asyncAfter(deadline: .now() + Double(SplashScreenView.SECCONDS_BEFORE_SWITCH)) {
+            if diff < (SplashScreenView.SECONDS_BEFORE_SWITCH * 1000000000) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + Double(SplashScreenView.SECONDS_BEFORE_SWITCH)) {
                     stateController.setState(.mainView)
                 }
             } else {

@@ -7,12 +7,17 @@
 
 import Foundation
 import FirebaseDatabase
+import Combine
 
 class VideoHelper: DatabaseHelper, ObservableObject {
     
     private(set) var didFirstRead = false
     
     @Published var videos: [String: VideoData] = [:]
+    
+    private static let DB_NAME = "videos"
+
+    private lazy var databasePath: DatabaseReference = database.child(VideoHelper.DB_NAME)
     
     override init() {
         super.init()
@@ -21,13 +26,13 @@ class VideoHelper: DatabaseHelper, ObservableObject {
     }
     
     func startVideoListener() {
-        database.child("videos").observe(.value) { [weak self] snapshot in
+        databasePath.observe(.value) { [weak self] snapshot in
             self?.processVideosSnapshot(snapshot)
         }
     }
     
     func readVideos() {
-        database.child("videos").getData { [weak self] error, snapshot in
+        databasePath.getData { [weak self] error, snapshot in
             if let error = error {
                 print("Failed to read videos. Error: \(error)")
                 return
@@ -46,6 +51,18 @@ class VideoHelper: DatabaseHelper, ObservableObject {
     }
 
     func updateVideo(video: Video) {
-        database.child("videos").child(video.id).setValue(video.videoData)
+        databasePath.child(video.id).setValue(video.videoData)
+    }
+    
+    func getUserVideosPublisher(for uid: String) -> AnyPublisher<[Video], Never> {
+        $videos
+        .map { data -> [Video] in
+            data.filter{ $0.value.getUserUID() == uid }.map { Video(fromEncoded: $0) }
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    func getUserVideos(for uid: String) -> [Video] {
+        videos.filter { $0.value.getUserUID() == uid }.map { Video(fromEncoded: $0) }
     }
 }

@@ -23,9 +23,7 @@ class ThumbnailHelper {
     
     func getThumbnail(forURL url: String) -> AnyPublisher<ImageResult, Never> {
         return dispatchQueue.sync {
-            print("asdfasdfasdf")
             if let image = thumbnails[url] {
-                print("asdfadsfa \(image)")
                 return image
             }
             

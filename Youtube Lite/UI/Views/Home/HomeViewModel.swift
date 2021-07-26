@@ -24,21 +24,21 @@ class HomeViewModel: CombineViewModel {
             DispatchQueue.main.async {
                 self.allVideos = videos
             }
-        }.store(in: &cancelables)
+        }.store(in: &cancellables)
         
         filterAndGetVideos(filter: { $0.getStars().getStars() < 3} )
         .sink { videos in
             DispatchQueue.main.async {
                 self.trending = videos
             }
-        }.store(in: &cancelables)
+        }.store(in: &cancellables)
         
         filterAndGetVideos(filter: { $0.getStars().getStars() >= 4} )
         .sink { videos in
             DispatchQueue.main.async {
                 self.popular = videos
             }
-        }.store(in: &cancelables)
+        }.store(in: &cancellables)
     }
     
     private func filterAndGetVideos(filter: @escaping (VideoData) -> Bool) -> AnyPublisher<[Video], Never> {

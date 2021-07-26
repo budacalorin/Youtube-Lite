@@ -41,7 +41,6 @@ struct VideoView: View {
                             HStack {
                                 Text("Rate video:")
                                 RateView(currentRating: $currentRating, onSelection: {
-                                    //                                    video.videoData.getStars().setStart($0, for: User.currentUser.id!)
                                     var stars = video.videoData.getStars()
                                     stars.setStart($0, for: User.currentUser.id!)
                                     video.videoData.setStars(stars)
@@ -75,7 +74,7 @@ struct VideoView: View {
                             
                             NavigationLink(
                                 destination: SeeAllView(
-                                    videos: FirebaseHelper.shared.getUserVideos(for: video.videoData.getUserUID()),
+                                    videos: FirebaseHelper.shared.videoHelper.getUserVideos(for: video.videoData.getUserUID()),
                                     title: { Text(userName) }
                                 ),
                                 label: {

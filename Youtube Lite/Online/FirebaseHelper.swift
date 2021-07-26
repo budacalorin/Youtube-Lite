@@ -18,17 +18,4 @@ class FirebaseHelper {
     let videoHelper = VideoHelper()
     
     private init() { }
-    
-    func getUserVideosPubllisher(for uid: String) -> AnyPublisher<[Video], Never> {
-        videoHelper.$videos
-        .map { data -> [Video] in
-            data.filter{ $0.value.getUserUID() == uid }.map { Video(fromEncoded: $0) }
-        }
-        .eraseToAnyPublisher()
-    }
-    
-    func getUserVideos(for uid: String) -> [Video] {
-        videoHelper.videos.filter { $0.value.getUserUID() == uid }.map { Video(fromEncoded: $0) }
-    }
-    
 }

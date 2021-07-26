@@ -26,7 +26,7 @@ class User: ObservableObject, Identifiable {
     private func startListeningForUserChanges() {
         FirebaseHelper.shared.authenticator.addStateChangeListener({ [weak self] (auth, user) in
             guard let user = user else {
-                print("Failed to retreive user.")
+                print("Failed to retrieve user.")
                 DispatchQueue.main.async {
                     self?.removeSigninData()
                 }

@@ -60,7 +60,7 @@ class ThumbnailHelper {
             return nil
         }
         
-        let asset: AVAsset = AVAsset(url: url)
+        let asset = AVAsset(url: url)
         let imageGenerator = AVAssetImageGenerator(asset: asset)
         imageGenerator.appliesPreferredTrackTransform = true
         

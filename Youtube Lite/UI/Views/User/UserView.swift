@@ -27,7 +27,7 @@ struct UserView: View {
                 VStack {
                     
                     Circle()
-                        .foregroundColor(.colorOnAccent.opacity(0.4))
+                        .foregroundColor(.backgroundTop)
                         .frame(width: 200, height: 200, alignment: .center)
                     
                     if user.isAuthenticated {

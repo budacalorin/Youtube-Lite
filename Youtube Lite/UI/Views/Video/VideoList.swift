@@ -50,6 +50,7 @@ struct VideoList<Content>: View where Content: View {
                                         Spacer()
                                     }
                                 }
+                                .frame(maxWidth: 160)
                                 .padding(5)
                                 .background(Color.formField.opacity(0.2))
                                 .cornerRadius(3.0)

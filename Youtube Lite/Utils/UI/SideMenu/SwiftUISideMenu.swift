@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// Source: https://github.com/globulus/swiftui-side-menu/
 public struct SideMenu<MenuContent: View>: ViewModifier {
     @Binding var isShowing: Bool
     private let menuContent: () -> MenuContent
@@ -14,7 +15,7 @@ public struct SideMenu<MenuContent: View>: ViewModifier {
         let drag = DragGesture().onEnded { event in
             if event.location.x < 200 && abs(event.translation.height) < 50 && abs(event.translation.width) > 50 {
                 withAnimation {
-                    self.isShowing = event.translation.width > 0
+                    isShowing = event.translation.width > 0
                 }
             }
         }
@@ -22,12 +23,12 @@ public struct SideMenu<MenuContent: View>: ViewModifier {
             ZStack(alignment: .leading) {
                 content
                     .frame(width: geometry.size.width, height: geometry.size.height)
-                    .offset(x: self.isShowing ? geometry.size.width / 1.5 : 0)
+                    .offset(x: isShowing ? geometry.size.width / 1.5 : 0)
                 
                 menuContent()
                     .frame(width: geometry.size.width / 1.5)
                     .transition(.move(edge: .leading))
-                    .offset(x: self.isShowing ? 0 : -geometry.size.width / 1.5)
+                    .offset(x: isShowing ? 0 : -geometry.size.width / 1.5)
             }.gesture(drag)
         }
     }

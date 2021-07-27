@@ -165,6 +165,16 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		051F8EC226AF47B000E9A056 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				055D2B4F26A97A240023BD62 /* VideoUtils.swift */,
+				055D2B6C26AD4B1B0023BD62 /* UserUtils.swift */,
+				055D2B7626AD70750023BD62 /* NumberUtils.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		05489E8E26A0C8F800EFC91E = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +337,7 @@
 		055D2B5E26A9ADB50023BD62 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				051F8EC226AF47B000E9A056 /* Data */,
 				055D2B5F26A9ADD10023BD62 /* UI */,
 				05489EB726A0D15800EFC91E /* Assets */,
 			);
@@ -340,10 +351,7 @@
 				05489EB026A0CCCB00EFC91E /* AppState.swift */,
 				056A4E3626A4A1200094C2C4 /* ViewUtils.swift */,
 				055D2B4126A89D9D0023BD62 /* CombineViewModel.swift */,
-				055D2B4F26A97A240023BD62 /* VideoUtils.swift */,
 				055D2B6826AC98330023BD62 /* FullScreenPlayer.swift */,
-				055D2B6C26AD4B1B0023BD62 /* UserUtils.swift */,
-				055D2B7626AD70750023BD62 /* NumberUtils.swift */,
 				055D2B8426ADC10D0023BD62 /* LoadingView.swift */,
 				054DE88226A5E6C3006F1A72 /* SideMenu */,
 			);

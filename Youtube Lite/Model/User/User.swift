@@ -42,7 +42,9 @@ class User: ObservableObject, Identifiable {
         userData[UserDataKeys.name.rawValue] = data.displayName
         id = data.uid
         
-        DispatchQueue.main.async { self.isAuthenticated = true }
+        DispatchQueue.main.async { [weak self] in
+            self?.isAuthenticated = true
+        }
     }
     
     func fetchUserData() {

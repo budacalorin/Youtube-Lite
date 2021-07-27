@@ -50,6 +50,7 @@ struct UploadPageView: View {
                                         }
                                     }, label: {
                                         Image(systemName: "minus")
+                                            .foregroundColor(.colorOnAccent)
                                     })
                                 }
                             }
@@ -71,6 +72,7 @@ struct UploadPageView: View {
                                     }
                                 }, label: {
                                     Image(systemName: "plus")
+                                        .foregroundColor(.colorOnAccent)
                                 })
                             }
                             .padding()
